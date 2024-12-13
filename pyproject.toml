@@ -1,0 +1,10 @@
+[project]
+name = "spark-data-analysis"
+version = "0.1.0"
+authors = [{ name = "Eduard Occhipinti" }, { name = "Domenico Di Stasio" }]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["pyspark"]
+
+[tool.setuptools]
+py-modules = []
