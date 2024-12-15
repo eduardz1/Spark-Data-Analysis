@@ -125,7 +125,7 @@ def parse_args():
     else:
         for q in args.questions:
             # Converts 1 to "q1", 2 to "q2", etc.
-            q_key = f"q{str(q).zfill(2)}"
+            q_key = f"q{str(q)}"
             if q_key in questions_config:
                 questions_config[q_key]["enabled"] = True
 
