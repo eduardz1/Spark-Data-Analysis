@@ -1,6 +1,7 @@
 import argparse
 import contextlib
 import os
+from pyspark.sql import SparkSession
 
 from rich.console import Console
 from rich.status import Status
@@ -19,7 +20,6 @@ from spark_data_analysis.questions.q9 import q9
 import typst
 
 TYPST_PATH = "report/report.typ"
-DATA = "data/"
 
 questions_config = {
     "q1": {
@@ -137,11 +137,22 @@ def main():
     install(show_locals=True)
     args = parse_args()
 
+    ss = (
+        SparkSession.builder.master("local")  # type: ignore
+        .appName("SparkDataAnalysis")
+        .config(
+            "spark.jars",
+            "https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-latest.jar",
+        )
+        .getOrCreate()
+    )
+    ss.conf.set("spark.sql.repl.eagerEval.enabled", True)
+
     def run():
         for q_id, q_info in questions_config.items():
             if q_info["enabled"]:
                 console.log(f"{q_id} - [bold red]{q_info['title']} [/bold red]")
-                q_info["function"](DATA)
+                q_info["function"](ss)
 
         if args.compile_pdf:
             status = Status("Compiling the report...")
