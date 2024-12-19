@@ -14,7 +14,7 @@ BUCKET_NAME = "gs://clusterdata-2011-2"
 
 
 @cache
-def job_events(ss, parts: int | Literal["full"] = "full") -> DataFrame:
+def job_events(ss: SparkSession, parts: int | Literal["full"] = "full") -> DataFrame:
     if parts == "full":
         parts = 500
 
@@ -63,7 +63,9 @@ def machine_events(ss: SparkSession) -> DataFrame:
 
 
 @cache
-def task_constraints(ss, parts: int | Literal["full"] = "full") -> DataFrame:
+def task_constraints(
+    ss: SparkSession, parts: int | Literal["full"] = "full"
+) -> DataFrame:
     if parts == "full":
         parts = 500
 
@@ -85,7 +87,7 @@ def task_constraints(ss, parts: int | Literal["full"] = "full") -> DataFrame:
 
 
 @cache
-def task_events(ss, parts: int | Literal["full"] = "full") -> DataFrame:
+def task_events(ss: SparkSession, parts: int | Literal["full"] = "full") -> DataFrame:
     if parts == "full":
         parts = 500
 
@@ -111,7 +113,7 @@ def task_events(ss, parts: int | Literal["full"] = "full") -> DataFrame:
 
 
 @cache
-def task_usage(ss, parts: int | Literal["full"] = "full") -> DataFrame:
+def task_usage(ss: SparkSession, parts: int | Literal["full"] = "full") -> DataFrame:
     if parts == "full":
         parts = 500
 
