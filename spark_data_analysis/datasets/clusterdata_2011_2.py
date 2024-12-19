@@ -16,7 +16,7 @@ BUCKET_NAME = "gs://clusterdata-2011-2"
 @cache
 def job_events(ss, parts: int | Literal["full"] = "full") -> DataFrame:
     if parts == "full":
-        parts = 499
+        parts = 500
 
     nums = [str(i).zfill(5) for i in range(parts)]
     nums = ",".join(nums)
@@ -65,7 +65,7 @@ def machine_events(ss: SparkSession) -> DataFrame:
 @cache
 def task_constraints(ss, parts: int | Literal["full"] = "full") -> DataFrame:
     if parts == "full":
-        parts = 499
+        parts = 500
 
     nums = [str(i).zfill(5) for i in range(parts)]
     nums = ",".join(nums)
@@ -87,7 +87,7 @@ def task_constraints(ss, parts: int | Literal["full"] = "full") -> DataFrame:
 @cache
 def task_events(ss, parts: int | Literal["full"] = "full") -> DataFrame:
     if parts == "full":
-        parts = 499
+        parts = 500
 
     nums = [str(i).zfill(5) for i in range(parts)]
     nums = ",".join(nums)
@@ -113,7 +113,7 @@ def task_events(ss, parts: int | Literal["full"] = "full") -> DataFrame:
 @cache
 def task_usage(ss, parts: int | Literal["full"] = "full") -> DataFrame:
     if parts == "full":
-        parts = 499
+        parts = 500
 
     nums = [str(i).zfill(5) for i in range(parts)]
     nums = ",".join(nums)
