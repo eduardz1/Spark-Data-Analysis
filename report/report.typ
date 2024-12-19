@@ -8,6 +8,11 @@
 
 = General Analyses
 
+#text(
+  fill: red,
+  [TODO: ask about which IDs are LongType, check if aggregations work with null types, check if reducing the dataset with a select of only the useful columns proves advantegous, check if it's correct to calculate correlation between booleans by casting them to double],
+)
+
 + q1
 
 + q2

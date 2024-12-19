@@ -14,7 +14,7 @@ def q5(ss: SparkSession):
     results = (
         je.join(te, je.JobID == te.JobID)
         .groupBy(je.JobID)
-        .agg(approx_count_distinct("MachineID").alias("DifferentMachines"))
+        .agg(approx_count_distinct(te.MachineID).alias("DifferentMachines"))
         .agg(
             avg("DifferentMachines").alias("AvgDifferentMachines"),
             max("DifferentMachines").alias("MaxDifferentMachines"),
