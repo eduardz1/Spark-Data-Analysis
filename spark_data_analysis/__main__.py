@@ -1,73 +1,34 @@
 import argparse
+import configparser
 import contextlib
+import importlib
 import os
-from pyspark.sql import SparkSession
 
+import typst
+from pyspark.sql import SparkSession
 from rich.console import Console
 from rich.status import Status
 from rich.traceback import install
 
-from spark_data_analysis.questions.q1 import q1
-from spark_data_analysis.questions.q2 import q2
-from spark_data_analysis.questions.q3 import q3
-from spark_data_analysis.questions.q4 import q4
-from spark_data_analysis.questions.q5 import q5
-from spark_data_analysis.questions.q6 import q6
-from spark_data_analysis.questions.q7 import q7
-from spark_data_analysis.questions.q8 import q8
-from spark_data_analysis.questions.q9 import q9
-
-import typst
-
 TYPST_PATH = "report/report.typ"
 
-questions_config = {
-    "q1": {
-        "enabled": False,
-        "function": q1,
-        "title": "Distribution of the machines according to their CPU capacity",
-    },
-    "q2": {
-        "enabled": False,
-        "function": q2,
-        "title": "Percentage of computational power lost due to maintenance",
-    },
-    "q3": {
-        "enabled": False,
-        "function": q3,
-        "title": "Distribution of the number of jobs per scheduling class",
-    },
-    "q4": {
-        "enabled": False,
-        "function": q4,
-        "title": "Probability of eviction of low-scheduling classes",
-    },
-    "q5": {
-        "enabled": False,
-        "function": q5,
-        "title": "Distribution of tasks from the same job across machines",
-    },
-    "q6": {
-        "enabled": False,
-        "function": q6,
-        "title": "Resource consumption compared to requested resources",
-    },
-    "q7": {
-        "enabled": False,
-        "function": q7,
-        "title": "Correlation of resource consumption peaks and evictions",
-    },
-    "q8": {
-        "enabled": False,
-        "function": q8,
-        "title": "TODO",
-    },
-    "q9": {
-        "enabled": False,
-        "function": q9,
-        "title": "TODO",
-    },
+QUESTION_TITLES = {
+    1: "Distribution of the machines according to their CPU capacity",
+    2: "Percentage of computational power lost due to maintenance",
+    3: "Distribution of the number of jobs per scheduling class",
+    4: "Probability of eviction of low-scheduling classes",
+    5: "Distribution of tasks from the same job across machines",
+    6: "Resource consumption compared to requested resources",
+    7: "Correlation of resource consumption peaks and evictions",
+    8: "TODO",
+    9: "TODO",
 }
+
+
+def parse_spark_config(path: str) -> dict:
+    config = configparser.ConfigParser()
+    config.read(path)
+    return dict(config["Spark"])
 
 
 def parse_args():
@@ -89,6 +50,14 @@ def parse_args():
         "--quiet",
         action="store_true",
         help="suppress additional information during code execution",
+    )
+    parser.add_argument(
+        "--spark_config",
+        type=str,
+        help=(
+            "path to the .ini Spark configuration file, by default it uses the "
+            "local configuration"
+        ),
     )
     group = parser.add_argument_group("questions", "Choose which question to run")
 
@@ -120,14 +89,7 @@ def parse_args():
     args = parser.parse_args()
 
     if args.all:
-        for q_key in questions_config.keys():
-            questions_config[q_key]["enabled"] = True
-    else:
-        for q in args.questions:
-            # Converts 1 to "q1", 2 to "q2", etc.
-            q_key = f"q{str(q)}"
-            if q_key in questions_config:
-                questions_config[q_key]["enabled"] = True
+        args.questions = range(1, 10)
 
     return args
 
@@ -148,11 +110,16 @@ def main():
     )
     ss.conf.set("spark.sql.repl.eagerEval.enabled", True)
 
+    if args.spark_config:
+        for k, v in parse_spark_config(args.spark_config).items():
+            ss.conf.set(k, v)
+
     def run():
-        for q_id, q_info in questions_config.items():
-            if q_info["enabled"]:
-                console.log(f"{q_id} - [bold red]{q_info['title']} [/bold red]")
-                q_info["function"](ss)
+        for q in args.questions:
+            module = importlib.import_module(f"spark_data_analysis.questions.q{q}")
+            func = getattr(module, f"q{q}")
+            console.log(f"{q} - [bold red]{QUESTION_TITLES[q]} [/bold red]")
+            func(ss)
 
         if args.compile_pdf:
             status = Status("Compiling the report...")
