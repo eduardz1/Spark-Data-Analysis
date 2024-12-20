@@ -10,19 +10,7 @@ from rich.console import Console
 from rich.status import Status
 from rich.traceback import install
 
-TYPST_PATH = "report/report.typ"
-
-QUESTION_TITLES = {
-    1: "Distribution of the machines according to their CPU capacity",
-    2: "Percentage of computational power lost due to maintenance",
-    3: "Distribution of the number of jobs per scheduling class",
-    4: "Probability of eviction of low-scheduling classes",
-    5: "Distribution of tasks from the same job across machines",
-    6: "Resource consumption compared to requested resources",
-    7: "Correlation of resource consumption peaks and evictions",
-    8: "TODO",
-    9: "TODO",
-}
+from spark_data_analysis.constants import QUESTION_TITLES, TYPST_PATH
 
 
 def parse_spark_config(path: str) -> dict:
@@ -57,6 +45,14 @@ def parse_args():
         help=(
             "path to the .ini Spark configuration file, by default it uses the "
             "local configuration"
+        ),
+    )
+    parser.add_argument(
+        "--plot",
+        action="store_true",
+        help=(
+            "plot the results of the analysis, by default it is disabled given "
+            "the fact that accurate plots need to create huge pandas dataframes"
         ),
     )
     group = parser.add_argument_group("questions", "Choose which question to run")
@@ -98,6 +94,8 @@ def main():
     console = Console()
     install(show_locals=True)
     args = parse_args()
+
+    os.environ["SPARK_DATA_ANALYSIS_PLOT"] = "true" if args.plot else "false"
 
     ss = (
         SparkSession.builder.master("local")  # type: ignore

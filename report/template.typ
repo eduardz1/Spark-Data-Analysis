@@ -36,6 +36,20 @@
   show heading: set block(above: 1.4em, below: 1em)
   set align(horizon)
 
+  set outline(fill: repeat[ #sym.space #sym.dot.c ], indent: true)
+  show outline.entry.where(level: 1): it => {
+    v(1.2em, weak: true)
+    strong(it)
+  }
+
+  show raw: set text(font: "Fira Code")
+  show: codly-init
+  codly(
+    languages: codly-languages,
+    zebra-fill: none,
+    number-format: it => text(fill: luma(200), str(it)),
+  )
+
   {
     // Title Page
     set align(center)
@@ -68,22 +82,6 @@
 
     v(1fr)
   }
-
-
-  set outline(fill: repeat[ #sym.space #sym.dot.c ], indent: true)
-  show outline.entry.where(level: 1): it => {
-    v(1.2em, weak: true)
-    strong(it)
-  }
-
-  show raw: set text(font: "Fira Code")
-  show: codly-init
-  codly(
-    languages: codly-languages,
-    zebra-fill: none,
-    number-format: it => text(fill: luma(200), str(it)),
-  )
-
 
   pagebreak()
 
