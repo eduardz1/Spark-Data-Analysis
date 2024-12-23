@@ -18,7 +18,7 @@ matplotlib==3.10.0
     # via spark-data-analysis (pyproject.toml)
 mdurl==0.1.2
     # via markdown-it-py
-numpy==2.2.0
+numpy==2.2.1
     # via
     #   contourpy
     #   matplotlib
@@ -36,7 +36,7 @@ pygments==2.18.0
     # via rich
 pyparsing==3.2.0
     # via matplotlib
-pyspark==3.5.3
+pyspark==3.5.4
     # via spark-data-analysis (pyproject.toml)
 python-dateutil==2.9.0.post0
     # via
