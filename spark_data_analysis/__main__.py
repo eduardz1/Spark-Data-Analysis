@@ -3,6 +3,7 @@ import configparser
 import contextlib
 import importlib
 import os
+import time
 
 import typst
 from pyspark.sql import SparkSession
@@ -117,7 +118,10 @@ def main():
             module = importlib.import_module(f"spark_data_analysis.questions.q{q}")
             func = getattr(module, f"q{q}")
             console.log(f"{q} - [bold red]{QUESTION_TITLES[q]} [/bold red]")
+            start = time.perf_counter()
             func(ss)
+            end = time.perf_counter()
+            console.log(f"Execution time: {end - start:.2f}s")
 
         if args.compile_pdf:
             status = Status("Compiling the report...")
