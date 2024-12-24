@@ -31,7 +31,7 @@
 
   show figure.caption: emph
 
-  set heading(numbering: "1")
+  set heading(numbering: "1.1")
   show heading: smallcaps
   show heading: set block(above: 1.4em, below: 1em)
   set align(horizon)
@@ -41,6 +41,19 @@
     v(1.2em, weak: true)
     strong(it)
   }
+
+  show table.cell.where(y: 0): strong
+  set table(
+    stroke: (x: none, y: 0.5pt + black),
+    row-gutter: (2.2pt, auto),
+    align: (x, y) => (
+      if x > 0 {
+        center
+      } else {
+        left
+      }
+    ),
+  )
 
   show raw: set text(font: "Fira Code")
   show: codly-init

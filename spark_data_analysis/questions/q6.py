@@ -1,10 +1,13 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import avg, corr
-
+from rich.console import Console
 from spark_data_analysis.datasets.clusterdata_2011_2 import task_events, task_usage
+from spark_data_analysis.rich import table
 
 
 def q6(ss: SparkSession):
+    console = Console()
+
     te = task_events(ss)
     tu = task_usage(ss)
 
@@ -32,19 +35,15 @@ def q6(ss: SparkSession):
         )
     )
 
-    result = (
+    results = (
         ru.join(rr, id)
         .agg(
-            corr(ru.CPUUsage, rr.CPURequest).alias("CPUCorrelation"),
-            corr(ru.MemoryUsage, rr.MemoryRequest).alias("MemoryCorrelation"),
-            corr(ru.DiskUsage, rr.DiskRequest).alias("DiskCorrelation"),
+            corr(ru.CPUUsage, rr.CPURequest).alias("CPU Correlation"),
+            corr(ru.MemoryUsage, rr.MemoryRequest).alias("Memory Correlation"),
+            corr(ru.DiskUsage, rr.DiskRequest).alias("Disk Correlation"),
         )
         .collect()[0]
         .asDict()
     )
 
-    print(
-        f"The correlation between the requested and actual CPU usage is {result['CPUCorrelation']:.2f}. "
-        f"The correlation between the requested and actual memory usage is {result['MemoryCorrelation']:.2f}. "
-        f"The correlation between the requested and actual disk usage is {result['DiskCorrelation']:.2f}."
-    )
+    table(console, "Resource Usage vs Resource Request", results)

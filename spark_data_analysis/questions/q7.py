@@ -1,7 +1,7 @@
 import os
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, corr, percentile_approx
+from pyspark.sql.functions import col, corr, percentile_approx, sum, count
 from pyspark.sql.window import Window
 
 from spark_data_analysis.constants import IMGS_PATH
@@ -14,31 +14,49 @@ def q7(ss: SparkSession):
 
     id = ["JobID", "TaskIndex"]  # Unique identifier for a task
 
-    percentile_95 = tu.withColumn(
-        "Percentile95",  # I define a peak as a value that is above the 95th percentile
-        percentile_approx(tu.MaximumMemoryUsage, 0.95).over(Window.partitionBy(id)),
-    ).join(te, id)
+    peaks = (
+        tu.withColumn(
+            "Percentile95",  # I define a peak as a value that is above the 95th percentile
+            percentile_approx(tu.MaximumMemoryUsage, 0.95).over(Window.partitionBy(id)),
+        )
+        .withColumn("IsPeak", tu.MaximumMemoryUsage > col("Percentile95"))
+        .join(te, id)
+    )  # TODO: cache
+
+    rates = (
+        peaks.groupBy("IsPeak")
+        .agg(
+            count("*").alias("TotalTasks"),
+            sum((col("EventType") == 2).cast("int")).alias("EvictedTasks"),
+        )
+        .withColumn("EvictionRate", col("EvictedTasks") / col("TotalTasks"))
+    ).collect()
+
+    corrs = peaks.agg(
+        corr(
+            col("IsPeak").cast("double"), (col("EventType") == 2).cast("double")
+        ).alias("Correlation")
+    ).collect()[0]["Correlation"]
 
     if os.environ.get("SPARK_DATA_ANALYSIS_PLOT") == "true":
         import matplotlib.pyplot as plt
 
-        percentile_95.toPandas().plot.scatter(
-            x="Percentile95", y="EventType", c="blue", alpha=0.5
-        )
-        plt.savefig(f"{IMGS_PATH}/peak_memory_usage_vs_task_eviction.svg")
+        plt.figure(figsize=(10, 4))
+        labels = ["Normal Memory Usage", "Peaks in Memory Usage"]
+        eviction_rates = [row["EvictionRate"] for row in rates]
+
+        plt.bar(labels, eviction_rates)
+        plt.title(f"Correlation: {corrs:.2f}")
+        plt.ylabel("Eviction Rate")
+        plt.ylim(0, max(eviction_rates) * 1.2)
+
+        # Add percentage labels
+        for i, rate in enumerate(eviction_rates):
+            plt.text(i, rate, f"{rate:.1%}", ha="center", va="bottom")
+
+        plt.savefig(f"{IMGS_PATH}/memory_eviction_rate_comparison.svg")
         plt.close()
 
-    result = (
-        percentile_95.agg(
-            corr(
-                (tu.MaximumMemoryUsage > col("Percentile95")).cast("double"),
-                (te.EventType == 2).cast("double"),
-            ).alias("Correlation")
-        )
-        .collect()[0]
-        .asDict()
-    )
-
     print(
-        f"The correlation between high peak memory usage and task evition is {result['Correlation']:.2f}."
+        f"The correlation between high peak memory usage and task evition is {corrs:.2f}."
     )
