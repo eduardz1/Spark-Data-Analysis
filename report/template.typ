@@ -25,7 +25,7 @@
   body,
 ) = {
   set document(title: title, author: authors)
-  set text(font: "New Computer Modern", size: 10pt, lang: lang, fallback: false)
+  set text(font: "New Computer Modern", size: 10pt, lang: lang)
   set page(paper: "a4")
   set par(justify: true, first-line-indent: 1.8em)
 
@@ -56,6 +56,7 @@
   )
 
   show raw: set text(font: "Fira Code")
+  show raw.where(block: true): set text(size: 0.8em)
   show: codly-init
   codly(
     languages: codly-languages,

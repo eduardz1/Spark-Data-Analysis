@@ -21,7 +21,7 @@ def q7(ss: SparkSession):
         )
         .withColumn("IsPeak", tu.MaximumMemoryUsage > col("Percentile95"))
         .join(te, id)
-    )  # TODO: cache
+    )
 
     rates = (
         peaks.groupBy("IsPeak")

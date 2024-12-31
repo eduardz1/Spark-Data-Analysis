@@ -4,7 +4,14 @@ version = "0.1.0"
 authors = [{ name = "Eduard Occhipinti" }, { name = "Domenico Di Stasio" }]
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["pyspark", "rich", "pandas", "matplotlib", "numpy", "typst"]
+dependencies = [
+    "pyspark==4.0.0.dev2",
+    "rich",
+    "pandas",
+    "matplotlib",
+    "numpy",
+    "typst",
+]
 
 [tool.setuptools]
 py-modules = []

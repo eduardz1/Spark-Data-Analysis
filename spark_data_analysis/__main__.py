@@ -98,20 +98,18 @@ def main():
 
     os.environ["SPARK_DATA_ANALYSIS_PLOT"] = "true" if args.plot else "false"
 
+    config = {
+        "spark.jars": "https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-latest.jar"
+    } | (parse_spark_config(args.spark_config) if args.spark_config else {})
+
     ss = (
         SparkSession.builder.master("local")  # type: ignore
         .appName("SparkDataAnalysis")
-        .config(
-            "spark.jars",
-            "https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-latest.jar",
-        )
+        .config(map=config)
         .getOrCreate()
     )
-    ss.conf.set("spark.sql.repl.eagerEval.enabled", True)
 
-    if args.spark_config:
-        for k, v in parse_spark_config(args.spark_config).items():
-            ss.conf.set(k, v)
+    ss.conf.set("spark.sql.repl.eagerEval.enabled", True)
 
     def run():
         for q in args.questions:

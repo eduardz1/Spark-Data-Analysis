@@ -1,4 +1,5 @@
-#import "template.typ": template, eqcolumns
+#import "template.typ": template, eqcolumns, codly
+#import "@preview/gentle-clues:1.1.0": *
 
 #show: template.with(
   title: [Spark Data Analysis],
@@ -41,12 +42,26 @@ If not otherwise specified, benchmarks are perfomed on a machine with the follow
     [46757MiB],
     [Ubuntu 20.10],
     [6.11.0-8-generic],
-    [3.5.3],
+    [3.5.4],
     [1Gbps],
   )
 ]
 
+== Memory <memory>
+
+Given that each question takes a long time to run, we will analyse perfomance differences on a quastion by question basis.
+
+In the starting configuration question 6 (`python -m spark_data_analysis -q 6`) takes 7222.89 seconds (#sym.approx 2 hours) to run. When trying to increase the memory by modifiying the start configuration to `--executor-memory 16G --driver-memory 16G` the time to run the question doesn't change and even increases slightly to 7388.93 seconds. The command used was `python -m spark_data_analysis -q 6 --spark-config="spark.ini"` where the `spark.ini` file contains the following configuration:
+
+```ini
+[Spark]
+spark.driver.memory=16g
+spark.executor.memory=16g
+```
+
 == Caching
+
+=== Python
 
 Given that we read the dataset directly from the server using the Google Cloud Storage API Connector, we decided to cache the `DataFrame` objects that result from each table. For example, the table `task_constraints` would be initialized in the following way:
 
@@ -82,3 +97,79 @@ def job_events(ss: SparkSession, parts: int | Literal["full"] = "full") -> DataF
 ```
 
 This way, the `DataFrame` object is cached and reused in subsequent calls to the function, which is particularly useful in the context of multiple questions being run in the same script. This is different from `cache` in Spark in that it only stores the object and doesn't persist data in memory. The `cache` operation is reserved for the question level and should be used in a more targeted way.
+
+=== Spark
+
+We now try leveraging the Spark cache mechanism to speed up the execution of the queries. We first try with the $7^"th"$ query, where we can cache the results of the `peaks` _transformation_ for the two _actions_ below: the collection of the `rates` and of the `correlations`:
+
+#codly(
+  highlights: (
+    (line: 13, start: 9, end: none, fill: yellow),
+  ),
+)
+```python
+def q7(ss: SparkSession):
+    te = task_events(ss)
+    tu = task_usage(ss)
+
+    id = ["JobID", "TaskIndex"]  # Unique identifier for a task
+
+    peaks = (
+        tu.withColumn(
+            "Percentile95",  # I define a peak as a value that is above the 95th percentile
+            percentile_approx(tu.MaximumMemoryUsage, 0.95).over(Window.partitionBy(id)),
+        )
+        .withColumn("IsPeak", tu.MaximumMemoryUsage > col("Percentile95"))
+        .join(te, id)
+        .cache()
+    )
+
+    rates = (
+        peaks.groupBy("IsPeak")
+        .agg(
+            count("*").alias("TotalTasks"),
+            sum((col("EventType") == 2).cast("int")).alias("EvictedTasks"),
+        )
+        .withColumn("EvictionRate", col("EvictedTasks") / col("TotalTasks"))
+    ).collect()
+
+    corrs = peaks.agg(
+        corr(
+            col("IsPeak").cast("double"), (col("EventType") == 2).cast("double")
+        ).alias("Correlation")
+    ).collect()[0]["Correlation"]
+
+    if os.environ.get("SPARK_DATA_ANALYSIS_PLOT") == "true":
+        ... # Plotting code
+
+    print(
+        f"The correlation between high peak memory usage and task evition is {corrs:.2f}."
+    )
+```
+
+#info[
+  When working with Spark DataFrames, the `cache` function is an alias to the `persist(StorageLevel.MEMORY_AND_DISK)` function, however, when working with RDDs, the `cache` function is an alias to the `persist(StorageLevel.MEMORY_ONLY)`.
+]
+
+When trying to run this code without any modifications, it fails after some hours due to a `java.lang.OutOfMemoryError`. We try then to run it again with the configuration that we explored in @memory, doing so also leads to an out of memory error. Apparently, the `DataFrame` will take more than the 16GB of memory that we allocated to the executor and, given that Spark utilizes the `/tmp` directory by default to store intermediate data. To solve this problem we can specify a different directory for the temporary files to be stored in, by setting the `spark.local.dir` configuration in the `spark.ini` file.
+
+```ini
+[Spark]
+spark.driver.memory=16g
+spark.executor.memory=16g
+spark.local.dir=.cache
+```
+
+This way, the temporary files will be stored in the `.cache` directory, which is located in the same directory as the script. The job now runs successfully but the overhead of caching is very significant. Without caching, question 7 takes 14236.03s (#sym.approx 4 hours), with caching 19209.56s (more than 5 hours!).
+
+== Parallelism <parallelism>
+
+Our next attempt to speed up Spark is by adding more executor instances, we will test the following configuration on questions 6 and 7:
+
+```ini
+[Spark]
+spark.executor.instances=6
+spark.executor.cores=2
+spark.driver.memory=4g
+spark.executor.memory=6g
+```

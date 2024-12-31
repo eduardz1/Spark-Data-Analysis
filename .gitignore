@@ -5,4 +5,4 @@
 *.egg-info/
 **/__pycache__/
 *.ini
-*.svg
+.cache/
