@@ -1,0 +1,5 @@
+services:
+  kafka:
+    image: apache/kafka-native:latest
+    ports:
+      - "9092:9092"

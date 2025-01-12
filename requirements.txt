@@ -10,7 +10,9 @@ cycler==0.12.1
     # via matplotlib
 fonttools==4.55.3
     # via matplotlib
-kiwisolver==1.4.7
+kafka-python-ng==2.2.3
+    # via spark-data-analysis (pyproject.toml)
+kiwisolver==1.4.8
     # via matplotlib
 markdown-it-py==3.0.0
     # via rich
@@ -28,13 +30,13 @@ packaging==24.2
     # via matplotlib
 pandas==2.2.3
     # via spark-data-analysis (pyproject.toml)
-pillow==11.0.0
+pillow==11.1.0
     # via matplotlib
 py4j==0.10.9.7
     # via pyspark
-pygments==2.18.0
+pygments==2.19.1
     # via rich
-pyparsing==3.2.0
+pyparsing==3.2.1
     # via matplotlib
 pyspark==3.5.4
     # via spark-data-analysis (pyproject.toml)

@@ -2,7 +2,7 @@
 
 ## Preliminaries
 
-Before being able to run the program you need to (1) Install the `gcloud` CLI from Google Cloud Services. (2) Initialize it. (3) Setup a default application login.
+Before being able to run the program you need to (1) Install the `gcloud` CLI from Google Cloud Services. (2) Initialize it. (3) Set up a default application login.
 
 ### Installing the `gcloud` CLI
 
@@ -67,13 +67,13 @@ python -m spark_data_analysis --help
 Each question can be run separately, for example the following command will run the first two questions:
 
 ```bash
-python -m spark_data_analysis --questions 1 2
+python -m spark_data_analysis questions -n 1 2
 ```
 
 To run all questions, use the following command:
 
 ```bash
-python -m spark_data_analysis --all
+python -m spark_data_analysis questions -all
 ```
 
 ### Spark Streaming
@@ -81,7 +81,23 @@ python -m spark_data_analysis --all
 You can either choose to run the Spark Streaming application or the questions, to run the Spark Streaming demo use the following command:
 
 ```bash
-python -m spark_data_analysis --streaming
+python -m spark_data_analysis -p 1 streaming
+```
+
+`-p 1` tells the program to use only one part of the dataset.
+
+#### Kafka and Zookeeper
+
+To run the Spark Streaming application you need to have Kafka and Zookeeper running. For this you can use the `docker-compose.yml` file provided in the `docker` directory. Starting from [Kafka 3.3](https://www.confluent.io/blog/apache-kafka-3-3-0-new-features-and-updates/) Zookeeper is no longer a requirement for running a Kafka broker so we are omitting it in our compose file, we're also using the native (faster even if less feature rich) version of Kafka. You can start the services manually with the following command:
+
+```bash
+docker compose up -d
+```
+
+But by default the demo will automatically start the services for you unless you specify the `--no-docker` flag.
+
+```bash
+python -m spark_data_analysis streaming --no-docker
 ```
 
 ### Compile the report

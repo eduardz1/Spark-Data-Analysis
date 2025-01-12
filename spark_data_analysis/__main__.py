@@ -4,6 +4,7 @@ import contextlib
 import importlib
 import os
 import time
+from typing import Mapping
 
 import typst
 from pyspark.sql import SparkSession
@@ -15,12 +16,25 @@ from spark_data_analysis.constants import QUESTION_TITLES, TYPST_PATH
 
 
 def parse_spark_config(path: str) -> dict:
+    """Parse the Spark configuration file.
+
+    Args:
+        path (str): Path to the Spark configuration file
+
+    Returns:
+        dict: Dictionary with the Spark configuration
+    """
     config = configparser.ConfigParser()
     config.read(path)
     return dict(config["Spark"])
 
 
-def parse_args():
+def parse_args() -> argparse.Namespace:
+    """Parse the command line arguments.
+
+    Returns:
+        argparse.Namespace: Parsed arguments
+    """
     parser = argparse.ArgumentParser(
         prog="python -m spark_data_analysis",
         description=(
@@ -36,11 +50,13 @@ def parse_args():
         help="compile the report in pdf format",
     )
     parser.add_argument(
+        "-q",
         "--quiet",
         action="store_true",
         help="suppress additional information during code execution",
     )
     parser.add_argument(
+        "-s",
         "--spark_config",
         type=str,
         help=(
@@ -49,6 +65,20 @@ def parse_args():
         ),
     )
     parser.add_argument(
+        "-p",
+        "--parts",
+        type=int,
+        metavar="[1-500]",
+        choices=range(1, 501),
+        help=(
+            "number of parts to read from the Clusterdata 2011 dataset, by "
+            "default it reads the full dataset"
+        ),
+    )
+    subparsers = parser.add_subparsers(dest="subcommands")
+
+    parser_q = subparsers.add_parser("questions", description="Run the Spark analysis")
+    parser_q.add_argument(
         "--plot",
         action="store_true",
         help=(
@@ -56,19 +86,17 @@ def parse_args():
             "the fact that accurate plots need to create huge pandas dataframes"
         ),
     )
-    group = parser.add_argument_group("questions", "Choose which question to run")
-
-    exclusive_group = group.add_mutually_exclusive_group(required=True)
-    exclusive_group.add_argument(
+    group = parser_q.add_argument_group("questions", "Choose which question to run")
+    exclusive_group_q = group.add_mutually_exclusive_group(required=True)
+    exclusive_group_q.add_argument(
         "-a",
-        "--all",
         action="store_true",
         help="run all questions",
     )
-    exclusive_group.add_argument(
-        "-q",
-        "--questions",
+    exclusive_group_q.add_argument(
+        "-n",
         choices=range(1, 10),
+        metavar="[1-9]",
         type=int,
         nargs="+",
         help=(
@@ -76,17 +104,24 @@ def parse_args():
             "associated question numbers"
         ),
     )
-    exclusive_group.add_argument(
-        "-s",
-        "--streaming",
+
+    parser_s = subparsers.add_parser(
+        "streaming", description="Run the Spark Streaming simulation"
+    )
+    parser_s.add_argument(
+        "--no-docker",
         action="store_true",
-        help="run the Spark Streaming simulation",
+        help=(
+            "run the Spark Streaming simulation without Docker, in this case "
+            "the program expects Kafka to be running"
+        ),
     )
 
     args = parser.parse_args()
 
-    if args.all:
-        args.questions = range(1, 10)
+    if args.subcommands == "questions":
+        if args.a:
+            args.n = range(1, 10)
 
     return args
 
@@ -96,30 +131,49 @@ def main():
     install(show_locals=True)
     args = parse_args()
 
-    os.environ["SPARK_DATA_ANALYSIS_PLOT"] = "true" if args.plot else "false"
-
-    config = {
+    config: Mapping = {
         "spark.jars": "https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-latest.jar"
-    } | (parse_spark_config(args.spark_config) if args.spark_config else {})
+    }
+
+    if args.spark_config:
+        config.update(parse_spark_config(args.spark_config))
+
+    if args.subcommands == "streaming":
+        config.update(
+            {
+                "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1",
+                "fs.gs.impl": "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem",
+                "fs.AbstractFileSystem.gs.impl": "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFS",
+            }
+        )
 
     ss = (
-        SparkSession.builder.master("local")  # type: ignore
+        SparkSession.builder.master("local[*]")  # type: ignore
         .appName("SparkDataAnalysis")
         .config(map=config)
         .getOrCreate()
     )
+    if args.quiet:
+        ss.sparkContext.setLogLevel("OFF")
 
     ss.conf.set("spark.sql.repl.eagerEval.enabled", True)
 
     def run():
-        for q in args.questions:
-            module = importlib.import_module(f"spark_data_analysis.questions.q{q}")
-            func = getattr(module, f"q{q}")
-            console.log(f"{q} - [bold red]{QUESTION_TITLES[q]} [/bold red]")
-            start = time.perf_counter()
-            func(ss)
-            end = time.perf_counter()
-            console.log(f"Execution time: {end - start:.2f}s")
+        if args.subcommands == "streaming":
+            from spark_data_analysis.stream.demo import streaming_demo
+
+            streaming_demo(ss, args.parts or "full", not args.no_docker)
+        else:
+            os.environ["SPARK_DATA_ANALYSIS_PLOT"] = "true" if args.plot else "false"
+
+            for n in args.n:
+                module = importlib.import_module(f"spark_data_analysis.questions.q{n}")
+                func = getattr(module, f"q{n}")
+                console.log(f"{n} - [bold red]{QUESTION_TITLES[n]} [/bold red]")
+                start = time.perf_counter()
+                func(ss, args.parts or "full")
+                end = time.perf_counter()
+                console.log(f"Execution time: {end - start:.2f}s")
 
         if args.compile_pdf:
             status = Status("Compiling the report...")

@@ -5,7 +5,8 @@ authors = [{ name = "Eduard Occhipinti" }, { name = "Domenico Di Stasio" }]
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "pyspark==4.0.0.dev2",
+    "pyspark<4",       # Spark 4 slightly breaks the regex syntax for reading multiple CSV files
+    "kafka-python-ng",
     "rich",
     "pandas",
     "matplotlib",
