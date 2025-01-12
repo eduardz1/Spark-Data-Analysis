@@ -12,6 +12,22 @@ spark\_data\_analysis.questions.q1 module
    :undoc-members:
    :show-inheritance:
 
+spark\_data\_analysis.questions.q10 module
+------------------------------------------
+
+.. automodule:: spark_data_analysis.questions.q10
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+spark\_data\_analysis.questions.q11 module
+------------------------------------------
+
+.. automodule:: spark_data_analysis.questions.q11
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 spark\_data\_analysis.questions.q2 module
 -----------------------------------------
 
