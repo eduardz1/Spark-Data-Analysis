@@ -186,7 +186,7 @@ class InstanceUsage(Enum):
     TAIL_CPU_USAGE_DISTRIBUTION = "tail_cpu_usage_distribution"
 
 
-INSTANCE_USAGE = (
+INSTANCE_USAGE_SCHEMA = (
     StructType()
     .add(InstanceUsage.START_TIME.value, IntegerType(), True)
     .add(InstanceUsage.END_TIME.value, IntegerType(), True)
@@ -231,7 +231,7 @@ INSTANCE_USAGE = (
 def instance_usage(
     ss: SparkSession, parts: int | Literal["full"] = "full"
 ) -> DataFrame:
-    return ss.read.schema(INSTANCE_USAGE).json(
+    return ss.read.schema(INSTANCE_USAGE_SCHEMA).json(
         f"{BUCKET_NAME}/instance_usage-{format_parts_file_regex(parts)}.json.gz"
     )
 

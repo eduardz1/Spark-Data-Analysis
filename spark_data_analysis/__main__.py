@@ -95,7 +95,7 @@ def parse_args() -> argparse.Namespace:
     )
     exclusive_group_q.add_argument(
         "-n",
-        choices=range(1, 10),
+        choices=range(1, 12), # TODO: Change to 11
         metavar="[1-9]",
         type=int,
         nargs="+",

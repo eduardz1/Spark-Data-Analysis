@@ -1,15 +1,29 @@
+from typing import Literal
+
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import avg, corr
 from rich.console import Console
+
 from spark_data_analysis.datasets.clusterdata_2011_2 import task_events, task_usage
 from spark_data_analysis.rich import table
 
 
-def q6(ss: SparkSession):
+def q6(ss: SparkSession, parts: int | Literal["full"]):
+    """Question 6
+
+    Answers the following questions:
+    - Are the tasks that request the more resources the one that consume the
+        more resources?
+
+    Args:
+        ss (SparkSession): Spark session
+        parts (int | Literal[&quot;full&quot;]): Number of parts to load. If
+            &quot;full&quot;, load all parts.
+    """
     console = Console()
 
-    te = task_events(ss)
-    tu = task_usage(ss)
+    te = task_events(ss, parts)
+    tu = task_usage(ss, parts)
 
     id = ["JobID", "TaskIndex"]  # Unique identifier for a task
 

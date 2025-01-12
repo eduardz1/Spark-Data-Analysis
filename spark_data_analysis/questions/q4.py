@@ -1,39 +1,56 @@
-import os
+from typing import Literal
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import approx_count_distinct, avg, max, stddev
+from pyspark.sql.functions import col
+from rich.console import Console
 
-from spark_data_analysis.constants import IMGS_PATH
 from spark_data_analysis.datasets.clusterdata_2011_2 import (
-    job_events,
+    TaskEvents,
     task_events,
 )
+from spark_data_analysis.rich import table
 
-def q4(ss: SparkSession):
-    from spark_data_analysis.datasets.clusterdata_2011_2 import task_events
-    from pyspark.sql.functions import col
 
-    te = task_events(ss)
+def q4(ss: SparkSession, parts: int | Literal["full"]):
+    """Question 4
 
-    # Filtra attività sfrattate
-    evicted_tasks = te.filter(te.EventType == "EVICT")
+    Answers the following questions:
+    - Do tasks with a low scheduling class have a higher probability of being evicted?
 
-    # Numero totale di attività per classe
-    total_tasks_per_class = te.groupBy("SchedulingClass").count().alias("Total")
+    Args:
+        ss (SparkSession): Spark session
+        parts (int | Literal[&quot;full&quot;]): Number of parts to load. If
+            &quot;full&quot;, load all parts.
+    """
+    console = Console()
 
-    # Numero di attività sfrattate per classe
-    evicted_tasks_per_class = evicted_tasks.groupBy("SchedulingClass").count().alias("Evicted")
+    te = task_events(ss, parts)
 
-    # Calcolo probabilità di sfratto
-    eviction_probability = (
-        evicted_tasks_per_class.join(total_tasks_per_class, "SchedulingClass")
-        .select(
-            "SchedulingClass",
-            (col("Evicted.count") / col("Total.count")).alias("EvictionProbability")
-        )
-        .orderBy("SchedulingClass")
+    evicted_tasks = te.filter(te.EventType == 2)
+    evicted_tasks_per_class = (
+        evicted_tasks.groupBy(TaskEvents.SCHEDULING_CLASS.value)
+        .count()
+        .alias("Evicted")
     )
 
-    print("Eviction Probability by Scheduling Class:")
-    for row in eviction_probability.collect():
-        print(f"Scheduling Class: {row['SchedulingClass']}, Probability: {row['EvictionProbability']:.2f}")
+    total_tasks_per_class = (
+        te.groupBy(TaskEvents.SCHEDULING_CLASS.value).count().alias("Total")
+    )
+
+    eviction_probability = (
+        evicted_tasks_per_class.join(
+            total_tasks_per_class, TaskEvents.SCHEDULING_CLASS.value
+        )
+        .select(
+            TaskEvents.SCHEDULING_CLASS.value,
+            (col("Evicted.count") / col("Total.count")).alias("EvictionProbability"),
+        )
+        .orderBy(TaskEvents.SCHEDULING_CLASS.value)
+    )
+
+    eviction_prob_dict = {
+        str(row[TaskEvents.SCHEDULING_CLASS.value]): row["EvictionProbability"]
+        for row in eviction_probability.collect()
+    }
+
+    table(console, "Eviction Probability by Scheduling Class", eviction_prob_dict)

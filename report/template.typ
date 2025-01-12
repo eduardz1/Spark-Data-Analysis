@@ -34,7 +34,6 @@
   set heading(numbering: "1.1")
   show heading: smallcaps
   show heading: set block(above: 1.4em, below: 1em)
-  set align(horizon)
 
   set outline(fill: repeat[ #sym.space #sym.dot.c ], indent: true)
   show outline.entry.where(level: 1): it => {

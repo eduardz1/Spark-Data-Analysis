@@ -10,7 +10,23 @@ def table(
     title: str,
     dictionary: dict[str, list | Any],
     render: bool = True,
-):
+) -> Table:
+    """Create a table from a dictionary.
+
+    Uses the rich library to create a table from a dictionary where the keys are
+    the column names and the values are the rows.
+
+    Args:
+        console (Console): rich console
+        title (str): Title of the table
+        dictionary (dict[str, list | Any]): Dictionary with column names as keys
+            and lists as values
+        render (bool, optional): Wether to print the console to terminal or not.
+            Defaults to True.
+
+    Returns:
+        Table: rich table object with the data from the dictionary
+    """
     table = Table(title=title, box=box.ROUNDED)
 
     keys = np.array(list(dictionary.keys()))
@@ -27,7 +43,7 @@ def table(
                 f"{value[i]:.4f}"
                 if isinstance(value[i], float)
                 else (
-                    f"{*value[i],}"  # noqa: E231
+                    f"{(*value[i],)}"  # noqa: E231
                     if isinstance(value[i], list)
                     else f"{value[i]}"
                 )

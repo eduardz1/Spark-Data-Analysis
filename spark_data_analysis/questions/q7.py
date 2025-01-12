@@ -1,16 +1,28 @@
 import os
+from typing import Literal
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, corr, percentile_approx, sum, count
+from pyspark.sql.functions import col, corr, count, percentile_approx, sum
 from pyspark.sql.window import Window
 
 from spark_data_analysis.constants import IMGS_PATH
 from spark_data_analysis.datasets.clusterdata_2011_2 import task_events, task_usage
 
 
-def q7(ss: SparkSession):
-    te = task_events(ss)
-    tu = task_usage(ss)
+def q7(ss: SparkSession, parts: int | Literal["full"]):
+    """Question 7
+
+    Answers the following questions:
+    - Can we observe correlations between peaks of high resource consumption on
+      some machines and task eviction events?
+
+    Args:
+        ss (SparkSession): Spark session
+        parts (int | Literal[&quot;full&quot;]): Number of parts to load. If
+            &quot;full&quot;, load all parts.
+    """
+    te = task_events(ss, parts)
+    tu = task_usage(ss, parts)
 
     id = ["JobID", "TaskIndex"]  # Unique identifier for a task
 

@@ -1,26 +1,39 @@
 import os
-from rich.console import Console
+from typing import Literal
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import approx_count_distinct, avg, max, stddev, median
+from pyspark.sql.functions import approx_count_distinct, avg, max, median, stddev
+from rich.console import Console
 
 from spark_data_analysis.constants import IMGS_PATH
 from spark_data_analysis.datasets.clusterdata_2011_2 import (
+    JobEvents,
+    TaskEvents,
     job_events,
     task_events,
 )
 from spark_data_analysis.rich import table
 
 
-def q5(ss: SparkSession):
+def q5(ss: SparkSession, parts: int | Literal["full"]):
+    """Question 5
+
+    Answers the following questions:
+    - In general, do tasks from the same job run on the same machine?
+
+    Args:
+        ss (SparkSession): Spark session
+        parts (int | Literal[&quot;full&quot;]): Number of parts to load. If
+            &quot;full&quot;, load all parts.
+    """
     console = Console()
 
-    je = job_events(ss)
-    te = task_events(ss)
+    je = job_events(ss, parts)
+    te = task_events(ss, parts)
 
     dm = (  # Different Machines
-        je.join(te, je.JobID == te.JobID)
-        .groupBy(je.JobID)
+        je.join(te, [JobEvents.JOB_ID.value, TaskEvents.JOB_ID.value])
+        .groupBy(JobEvents.JOB_ID.value)
         .agg(approx_count_distinct(te.MachineID).alias("DifferentMachines"))
     )
 

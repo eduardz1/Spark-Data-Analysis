@@ -8,6 +8,8 @@ QUESTION_TITLES = {
     5: "Distribution of tasks from the same job across machines",
     6: "Resource consumption compared to requested resources",
     7: "Correlation of resource consumption peaks and evictions",
-    8: "TODO",
-    9: "TODO",
+    8: "Resource analysis for Scheduling Class",
+    9: "Evolution over time of resource requests for long-running jobs",
+    10: "Memory Behaviour Analysis",
+    11: "dummy",
 }

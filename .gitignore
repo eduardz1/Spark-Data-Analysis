@@ -6,3 +6,5 @@
 **/__pycache__/
 *.ini
 .cache/
+.vscode/
+docs/_build/
