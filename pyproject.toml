@@ -19,7 +19,6 @@ dependencies = [
 dev = [
     "pip-tools", # Provides pip-compile
     "sphinx",    # Documentation generator
-    "sphinx-rtd-theme", # ReadTheDocs theme
 ]
 
 [tool.setuptools]
