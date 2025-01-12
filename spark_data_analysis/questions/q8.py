@@ -1,73 +1,46 @@
+import os
 from typing import Literal
 
-import matplotlib.pyplot as plt
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col
-from pyspark.sql.functions import sum as spark_sum
+from pyspark.sql.functions import avg, hour, from_unixtime
 
 from spark_data_analysis.constants import IMGS_PATH
-from spark_data_analysis.datasets.clusterdata_2011_2 import task_events
+from spark_data_analysis.datasets.clusterdata_2011_2 import (
+    TaskUsage,
+    task_usage,
+)
 
 
 def q8(ss: SparkSession, parts: int | Literal["full"]):
-    te = task_events(ss, parts)
-    print("Dataset task_events caricato.")
-    print(
-        f"Numero totale di righe nel dataset: {te.count()}"
-    )  # Debug: Controllo del numero di righe iniziali
+    """Question 8
 
-    # Filtra le righe dove EventType è 0 (Submit)
-    submit_tasks = te.filter(col("EventType") == 0)
-    print("Filtrate le righe con EventType == 0 (Submit).")
-    print(
-        f"Numero di righe dopo il filtro: {submit_tasks.count()}"
-    )  # Debug: Controllo delle righe filtrate
+    Answers the following questions:
+    - What is the hourly cycles per instruction measure?
 
-    # Raggruppa per SchedulingClass e calcola il numero di attività inviate
-    tasks_per_class = (
-        submit_tasks.groupBy("SchedulingClass")
-        .agg(
-            spark_sum("CPURequest").alias("TotalCPUs"),
-            spark_sum("MemoryRequest").alias("TotalMemory"),
-        )
-        .orderBy("SchedulingClass")
+    Args:
+        ss (SparkSession): Spark Session
+        parts (int | Literal[&quot;full&quot;]): Number of parts to load. If
+            &quot;full&quot;, load all parts.
+    """
+    tu = task_usage(ss, parts).na.drop(subset=[TaskUsage.CYCLES_PER_INSTRUCTION.value])
+
+    hourly_cpi = (
+        tu.withColumn("hour", hour(from_unixtime(TaskUsage.START_TIME.value)))
+        .groupBy("hour")
+        .agg(avg(TaskUsage.CYCLES_PER_INSTRUCTION.value).alias("avg_cpi"))
+        .orderBy("hour")
     )
-    print("Calcolata la somma di CPUs e Memory per SchedulingClass.")
-    print(
-        f"Numero di righe nel risultato aggregato: {tasks_per_class.count()}"
-    )  # Debug: Numero di righe aggregate
-    tasks_per_class.show()  # Debug: Mostra il risultato aggregato
+    
+    if os.environ.get("SPARK_DATA_ANALYSIS_PLOT") == "true":
+        import matplotlib.pyplot as plt
+        import seaborn as sns
 
-    # Stampa i risultati in console
-    print("Distribuzione delle risorse (CPUs e Memory) per SchedulingClass:")
-    for row in tasks_per_class.collect():
-        print(
-            f"Scheduling Class: {row['SchedulingClass']}, Total CPUs: {row['TotalCPUs']}, Total Memory: {row['TotalMemory']}"
-        )
-
-    # Aggiungi grafici con matplotlib
-    import matplotlib.pyplot as plt
-
-    # Trasforma i risultati in un formato utilizzabile con matplotlib
-    results = tasks_per_class.collect()
-    scheduling_classes = [str(row["SchedulingClass"]) for row in results]
-    total_cpus = [row["TotalCPUs"] for row in results]
-    total_memory = [row["TotalMemory"] for row in results]
-
-    print("Generazione dei grafici con matplotlib.")
-    # Grafico per CPUs
-    plt.figure(figsize=(10, 6))
-    plt.bar(scheduling_classes, total_cpus, color="skyblue")
-    plt.title("CPUs distribution for each scheduling class")
-    plt.xlabel("Scheduling Class")
-    plt.ylabel("Total CPUs")
-    plt.savefig(f"{IMGS_PATH}/cpu_dist_schedulingclass.svg")
-
-    # Grafico per Memory
-    plt.figure(figsize=(10, 6))
-    plt.bar(scheduling_classes, total_memory, color="salmon")
-    plt.title("Memory distribution for each scheduling class")
-    plt.xlabel("Scheduling Class")
-    plt.ylabel("Total Memory")
-    plt.savefig(f"{IMGS_PATH}/mem_dist_schedulingclass.svg")
-    plt.close()
+        # Plot hourly CPI pattern
+        hourly_data = hourly_cpi.toPandas()
+        plt.figure(figsize=(12, 4))
+        sns.lineplot(data=hourly_data, x="hour", y="avg_cpi")
+        plt.title("Average CPI by Hour")
+        plt.xlabel("Hour of Day")
+        plt.ylabel("Average CPI")
+        plt.savefig(f"{IMGS_PATH}/hourly_cpi.svg")
+        plt.close()

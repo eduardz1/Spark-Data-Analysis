@@ -75,7 +75,10 @@ options:
 
 To configure the connector we had to configure the `spark.jars` property to point to `https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-latest.jar` and set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to the path of the JSON file containing the service account key.
 
-For the streaming demo (@streaming) we also had to set the `fs.gs.impl` and `fs.AbstractFileSystem.gs.impl` properties to `com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem` and `com.google.cloud.hadoop.fs.gcs.GoogleHadoopFS` respectively. For the streaming demo we also had to add the Kafka connetor by setting `spark.jars.packages` to `org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1`.
+For the streaming demo (@streaming) we also had to set the properties:
+- `fs.gs.impl` to `com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem`
+- `fs.AbstractFileSystem.gs.impl` to `com.google.cloud.hadoop.fs.gcs.GoogleHadoopFS`
+For the streaming demo we also had to add the Kafka connetor by setting `spark.jars.packages` to `org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1`.
 
 To configure the Spark environment one can also pass a `.ini` file with the desired configuration. The file should have the following structure:
 
@@ -119,13 +122,7 @@ First let's take a look at the general statistics of the dataset by anwsering a 
     image("imgs/memory_eviction_rate_comparison.svg"),
     caption: [Eviction rate comparison for tasks with normal memory usage compared to ones that have a peak in memory usage.],
   )
-+ "#underline[Identify and analyze the total amount of resources (in terms of CPUs and memory) allocated to each scheduling class. Focus on all events where tasks were submitted. Visualize the distribution of CPUs and memory for each scheduling class.]" General observations show a clear concentration of resources allocated to Scheduling Class 0, which accounts for approximately 68% of CPUs and 69% of total memory. This suggests that Class 0 is central to the overall functioning of the system. The other classes (1, 2, and 3) have a much more limited usage, with Class 3 being marginal compared to the rest. The correlation between CPUs and memory within each class appears linear, indicating that workloads within a class require proportional resources in terms of computation and memory. In conclusion, Scheduling Class 0 is likely used for the main and most important tasks, while the other classes seem to be reserved for secondary or specialized workloads. This hierarchy reflects a system designed to prioritize efficiency and critical activities.#figure(
-  image("imgs/cpu_dist_schedulingclass.svg"),
-  caption: [CPUs distribution for each scheduling class.],
-)#figure(
-  image("imgs/mem_dist_schedulingclass.svg"),
-  caption: [Memory distribution for each scheduling class],
-)
++ "#underline[What is the hourly cycles per instruction measure?]" We can see the hourly cycles per instruction measure (CPI) in the following graph: #figure(image("imgs/hourly_cpi.svg"), caption: [Hourly cycles per instruction measure.])
 + "#underline[How do resource requests (CPU, memory) evolve over time for long-running jobs?]" We want to see if there is a trend in resource requests over time for long-running jobs, where a “long-running” job we defined as jobs taking more than an hour to complete. Curiously we see that CPU Requests spike in conjunction with Memory requests about one hour after the start of the job. We hypothesize that this is due to the jobs we selected requiring a long setup time. #figure(image("imgs/normalized_resource_evolution.svg"), caption: [Normalized resource requests over time for long-running jobs.])
 
 = Performance Tuning
@@ -351,11 +348,13 @@ python -m spark_data_analysis -p 1 streaming
 
 #tip[The flag `-p 1` is used to tell the application to use only one part of the dataset as there is no need to use the entire dataset for this demo.]
 
-= Cluster Data 2019
+= Other Datasets
+
+== Cluster Data 2019
 
 In this section we will analyse the paper "Borg: the Next Generation" and apply our code to the new dataset.
 
-== Example of Usage of the Dataset
+=== Example of Usage of the Dataset
 
 As an example of the usage of the dataset, we provide a tenth question which answers "#underline[What is page cache vs assigned memory ratio? What is the average number of memory accesses per instruction?]" which successfully runs on the new dataset and provides the following results #footnote[For the first 200 parts of the dataset]:
 
@@ -364,64 +363,47 @@ As an example of the usage of the dataset, we provide a tenth question which ans
 
 The question uses the `spark_data_analysis.datasets.clusterdata_2019` module and analyses the "Instance Usage" table.
 
-== Borg Workload Evolution
+=== Borg Workload Evolution (2011-2019)
 
-The paper highlights that Borg's workload underwent several significant evolutions between 2011 and 2019:
+The analysis that we conducted on the paper articles reveals that Borg's workload experienced significant transformations between 2011 and 2019, highlighting key changes in job management, resource utilization, and system efficiency.
 
-- Increase in Job Submission Rate
-  - The job submission rate increased *3.7x* compared to 2011.
-  - The number of tasks requiring scheduling grew *7x*, even though cell sizes in 2019 are similar to those in 2011.
-  - Despite this growth, the *scheduler's time* to allocate tasks has remained *unchanged*.
+*Increased Job Submission Rate*
+The job submission rate saw a remarkable 3.7x increase compared to 2011, while the number of tasks requiring scheduling grew 7x. Notably, these increases occurred without changes in cell size between 2011 and 2019. Despite this surge, the scheduler maintained consistent allocation times, demonstrating its robustness under higher workloads.
 
-- Change in Workload Mix
-  - A substantial portion of the workload shifted from the *"free" tier* (low priority) to the *"best-effort batch" tier* (batch-queued jobs).
-  - Utilization for *"production" tier* jobs (high priority) remained approximately *constant*.
-  - Notable workload *variation between cells* was observed.
+*Changes in Workload Mix*
+The composition of workloads evolved, with a substantial shift from the "free" tier (low priority) to the "best-effort batch" tier (batch-queued jobs). Meanwhile, utilization for "production" tier jobs (high priority) remained stable. Workload distribution also varied significantly across different cells.
 
-- Increase in Resource Utilization
-  - *Average resource utilization* (CPU and memory) increased, driven by higher consumption in the *"best-effort batch" tier*.
-  - The "best-effort batch" tier accounts for *20%* of cell capacity for both CPU and memory.
+*Increased Resource Utilization*
+Average utilization of CPU and memory increased, largely driven by higher consumption in the "best-effort batch" tier, which now accounts for 20% of cell capacity for both resources. This shift reflects the growing importance of batch workloads within Borg's infrastructure.
 
-- Heavy-Tailed Job Size Distribution
-  - Resource consumption by jobs is *highly variable*:
-    - The largest jobs (*1% of jobs) consume **over 99%* of all resources.
-  - This necessitates isolating *small jobs* from *large jobs* to maintain *queue times*.
+*Heavy-Tailed Job Size Distribution*
+Resource consumption by jobs exhibited extreme variability, with 1% of jobs consuming over 99% of resources. This disparity required isolating smaller jobs from larger ones to maintain reasonable queue times and prevent resource bottlenecks.
 
-- Resource Over-Commitment
-  - Significant increase in *resource over-commitment*:
-    - The sum of requested resource limits exceeds the cell's capacity.
-  - Borg relies on *statistical multiplexing*, assuming jobs will not fully use requested resources.
-  - In 2011, CPU over-commitment was higher; by 2019, *memory over-allocation* matched CPU levels.
+*Resource Over-Commitment*
+The use of statistical multiplexing led to a significant increase in resource over-commitment, where requested resource limits exceeded cell capacity. While CPU over-commitment was predominant in 2011, by 2019, memory over-allocation had risen to match CPU levels. This approach leverages the fact that most jobs do not fully utilize their requested resources.
 
-- Use of Alloc Sets
-  - Introduced in 2019, *alloc sets* allow users to reserve resources for specific jobs:
-    - They account for *20% of total CPU* and *18% of RAM*.
-    - *15% of jobs* are run in alloc sets, mostly in the *"production" tier*.
+*Introduction of Alloc Sets*
+In 2019, alloc sets were introduced, enabling users to reserve resources for specific jobs. These accounted for 20% of total CPU and 18% of RAM, with 15% of jobs utilizing alloc sets, primarily in the "production" tier. This innovation improved resource predictability for critical workloads.
 
-- Vertical Scaling
-  - Borg now supports *automatic vertical scaling* via *Autopilot*:
-    - Dynamically adjusts resource limits to reduce gaps between requested and actual resource usage.
+*Vertical Scaling with Autopilot*
+Borg incorporated automatic vertical scaling through a system called Autopilot, which dynamically adjusts resource limits to close the gap between requested and actual usage. This feature enhanced resource efficiency while adapting to varying workload demands.
 
-- Improved Resource Efficiency
-  - Borg has enabled users to perform *more work* on *fixed machine capacity, despite no significant change in **actual machine utilization*.
+*Improved Resource Efficiency*
+Borg achieved higher throughput on fixed machine capacity, allowing users to perform more work without a significant increase in actual machine utilization. This reflects ongoing improvements in system efficiency and workload management.
 
-- Summary: in 2019, Borg's workload featured:
-  - A *significant increase* in workload rate.
-  - A *different workload mix* with greater reliance on the *"best-effort batch" tier*.
-  - High *variability in resource usage*.
-  - Greater use of *alloc sets* and *resource over-commitment*.
-  - Introduction of *automatic vertical scaling* via *Autopilot*.
+== Alibaba's Dataset Analysis and comparison with Google
 
-== Alibaba
+From the analysis we conducted on the published papers, *Alibaba’s approach* to cluster management and machine learning workloads reveals several key features and innovations. *Alibaba Cloud* offers a *Machine Learning as a Service* (MLaaS) platform called PAI (Platform for Artificial Intelligence), which supports the entire machine learning pipeline and integrates frameworks like *TensorFlow* and *PyTorch*. A notable contribution is the release of a two-month cluster trace from a production environment with over 6,000 GPUs, showcasing a mix of *training* and *inference jobs* that span various machine learning algorithms. This trace stands out as one of the most comprehensive datasets in terms of *workload diversity* and *cluster scale*.
 
-From the analysis we conducted on the published papers, Alibaba’s approach to cluster management and machine learning workloads reveals several key features and innovations. Alibaba Cloud offers a Machine Learning as a Service (MLaaS) platform called PAI (Platform for Artificial Intelligence), which supports the entire machine learning pipeline and integrates frameworks like TensorFlow and PyTorch. A notable contribution is the release of a two-month cluster trace from a production environment with over 6,000 GPUs, showcasing a mix of training and inference jobs that span various machine learning algorithms. This trace stands out as one of the most comprehensive datasets in terms of workload diversity and cluster scale.
+*Alibaba’s clusters* are heterogeneous, consisting of various *GPU generations* and resource configurations. The PAI platform implements *GPU sharing techniques* to optimize resource utilization, achieving up to *50% GPU savings* compared to non-sharing systems. GPU allocation is highly granular, with a minimum allocation unit of 0.01%, though at least 1% of memory and GPU time is reserved per task. However, GPU sharing introduces *fragmentation*, leaving some GPUs underutilized. To address this, Alibaba developed *Fragmentation Gradient Descent (FGD)*, which reduces fragmentation by up to 49% and enables the use of an additional 290 GPUs through improved job scheduling guided by a novel fragmentation metric.
 
-Alibaba’s clusters are heterogeneous, consisting of various GPU generations and resource configurations. The PAI platform implements GPU sharing techniques to optimize resource utilization, achieving up to 50% GPU savings compared to non-sharing systems. GPU allocation is highly granular, with a minimum allocation unit of 0.01%, though at least 1% of memory and GPU time is reserved per task. However, GPU sharing introduces fragmentation, leaving some GPUs underutilized. To address this, Alibaba developed Fragmentation Gradient Descent (FGD), which reduces fragmentation by up to 49% and enables the use of an additional 290 GPUs through improved job scheduling guided by a novel fragmentation metric.
+Some tasks on Alibaba’s PAI platform exhibit low GPU utilization, creating *CPU bottlenecks* due to intensive data processing demands. The platform employs a *scheduling policy* that differentiates between high and low GPU utilization tasks to ensure efficient resource distribution.
 
-Some tasks on Alibaba’s PAI platform exhibit low GPU utilization, creating CPU bottlenecks due to intensive data processing demands. The platform employs a scheduling policy that differentiates between high and low GPU utilization tasks to ensure efficient resource distribution.
+When comparing Alibaba’s system to *Google’s Borg*, both companies operate large-scale computational infrastructures—Google with clusters hosting tens of thousands of machines and Alibaba managing over 6,000 GPUs in its PAI cluster. Both companies have also released public traces for research purposes. Alibaba’s trace emphasizes *GPU utilization* and includes diverse *machine learning workloads*, while Google’s focuses on general workload management in data centers.
 
-When comparing Alibaba’s system to Google’s Borg, both companies operate large-scale computational infrastructures—Google with clusters hosting tens of thousands of machines and Alibaba managing over 6,000 GPUs in its PAI cluster. Both companies have also released public traces for research purposes. Alibaba’s trace emphasizes GPU utilization and includes diverse machine learning workloads, while Google’s focuses on general workload management in data centers.
-
-Both companies manage heterogeneous clusters, though Alibaba’s GPU heterogeneity is more pronounced, with multiple generations of GPUs in operation. Regarding resource sharing, Google employs alloc sets for heavy workloads, whereas Alibaba leverages GPU sharing with fine-grained allocation units. Optimization objectives are aligned, as both focus on maximizing resource utilization and reducing job completion times. Google achieves this through Autopilot’s autoscaling, while Alibaba employs techniques like FGD and AntMan for dynamic scaling in machine learning workloads.
+Both companies manage heterogeneous clusters, though Alibaba’s GPU heterogeneity is more pronounced, with multiple generations of GPUs in operation. Regarding *resource sharing*, Google employs *alloc sets* for heavy workloads, whereas Alibaba leverages *GPU sharing* with fine-grained allocation units. *Optimization objectives* are aligned, as both focus on maximizing resource utilization and reducing job completion times. Google achieves this through *Autopilot’s autoscaling*, while Alibaba employs techniques like FGD and AntMan for dynamic scaling in machine learning workloads.
 
 Overall, Google appears more focused on general workload management, while Alibaba concentrates on machine learning workloads, emphasizing GPU optimization and addressing fragmentation challenges.
+
+
+

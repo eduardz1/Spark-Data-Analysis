@@ -68,11 +68,9 @@ def parse_args() -> argparse.Namespace:
         "-p",
         "--parts",
         type=int,
-        metavar="[1-500]",
-        choices=range(1, 501),
         help=(
-            "number of parts to read from the Clusterdata 2011 dataset, by "
-            "default it reads the full dataset"
+            "number of parts to read from the Clusterdata 2011 or 1029 dataset,"
+            "by default it reads the full dataset"
         ),
     )
     subparsers = parser.add_subparsers(dest="subcommands")
@@ -95,8 +93,8 @@ def parse_args() -> argparse.Namespace:
     )
     exclusive_group_q.add_argument(
         "-n",
-        choices=range(1, 12), # TODO: Change to 11
-        metavar="[1-9]",
+        choices=range(1, 11),
+        metavar="[1-10]",
         type=int,
         nargs="+",
         help=(
