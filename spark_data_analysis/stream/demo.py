@@ -1,17 +1,19 @@
+import subprocess
 from threading import Thread
 from typing import Literal
+
+from kafka import KafkaAdminClient
+from kafka.admin import NewTopic
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
     avg,
     col,
     from_json,
-    to_timestamp,
     from_unixtime,
+    to_timestamp,
 )
-import time
-import subprocess
-from kafka import KafkaAdminClient
-from kafka.admin import NewTopic
+from retry import retry
+
 from spark_data_analysis.datasets.clusterdata_2011_2 import (
     TASK_USAGE_SCHEMA,
     task_usage,
@@ -22,6 +24,7 @@ TOPIC = "task-usage"
 BOOTSTRAP_SERVERS = "localhost:9092"
 
 
+@retry(tries=5, delay=5)  # Retries in case docker has not finished starting Kafka
 def recreate_topic(name: str, **kwargs):
     """Recreate a Kafka topic if it doesn't exist
 
@@ -53,7 +56,6 @@ def ensure_kafka_running():
             ["docker", "compose", "up", "-d"],
             check=True,
         )
-        time.sleep(10)  # Wait for services to start
     except subprocess.CalledProcessError as e:
         print("Failed to start Kafka:", e)
         raise

@@ -1,6 +1,7 @@
 import json
 import time
 from typing import Callable, ParamSpec
+
 from kafka import KafkaProducer
 from pyspark.sql import DataFrame
 from pyspark.sql.functions import col
