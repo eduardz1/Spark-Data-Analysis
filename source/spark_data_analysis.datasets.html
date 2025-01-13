@@ -38,11 +38,809 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
-<section id="spark-data-analysis-datasets-clusterdata-2011-2-module">
-<h2>spark_data_analysis.datasets.clusterdata_2011_2 module<a class="headerlink" href="#spark-data-analysis-datasets-clusterdata-2011-2-module" title="Link to this heading">¶</a></h2>
+<section id="module-spark_data_analysis.datasets.clusterdata_2011_2">
+<span id="spark-data-analysis-datasets-clusterdata-2011-2-module"></span><h2>spark_data_analysis.datasets.clusterdata_2011_2 module<a class="headerlink" href="#module-spark_data_analysis.datasets.clusterdata_2011_2" title="Link to this heading">¶</a></h2>
+<p>Clusterdata 2011-2 dataset.</p>
+<p>This module contains the schema definitions for the Clusterdata 2011-2 dataset
+from Google. This module also provides functions to load the dataset into a
+DataFrame using Spark. The functions are cached to avoid loading the same data
+multiple times and provide a way to specify the number of parts to load.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.JobEvents">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">JobEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.JobEvents" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the JobEvents dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.EVENT_TYPE">
+<span class="sig-name descname"><span class="pre">EVENT_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EventType'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.EVENT_TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.JOB_ID">
+<span class="sig-name descname"><span class="pre">JOB_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'JobID'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.JOB_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.JOB_NAME">
+<span class="sig-name descname"><span class="pre">JOB_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'JobName'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.JOB_NAME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.LOGICAL_JOB_NAME">
+<span class="sig-name descname"><span class="pre">LOGICAL_JOB_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LogicalJobName'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.LOGICAL_JOB_NAME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.MISSING_INFO">
+<span class="sig-name descname"><span class="pre">MISSING_INFO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MissingInfo'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.MISSING_INFO" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.SCHEDULING_CLASS">
+<span class="sig-name descname"><span class="pre">SCHEDULING_CLASS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SchedulingClass'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.SCHEDULING_CLASS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.TIME">
+<span class="sig-name descname"><span class="pre">TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.USER">
+<span class="sig-name descname"><span class="pre">USER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'User'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.JobEvents.USER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">MachineAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the MachineAttributes dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes.ATTRIBUTE_DELETED">
+<span class="sig-name descname"><span class="pre">ATTRIBUTE_DELETED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AttributeDeleted'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes.ATTRIBUTE_DELETED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes.ATTRIBUTE_NAME">
+<span class="sig-name descname"><span class="pre">ATTRIBUTE_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AttributeName'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes.ATTRIBUTE_NAME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes.ATTRIBUTE_VALUE">
+<span class="sig-name descname"><span class="pre">ATTRIBUTE_VALUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AttributeValue'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes.ATTRIBUTE_VALUE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes.MACHINE_ID">
+<span class="sig-name descname"><span class="pre">MACHINE_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MachineID'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes.MACHINE_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes.TIME">
+<span class="sig-name descname"><span class="pre">TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineAttributes.TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">MachineEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the MachineEvents dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.CPUS">
+<span class="sig-name descname"><span class="pre">CPUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CPUs'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.CPUS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.EVENT_TYPE">
+<span class="sig-name descname"><span class="pre">EVENT_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EventType'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.EVENT_TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.MACHINE_ID">
+<span class="sig-name descname"><span class="pre">MACHINE_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MachineID'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.MACHINE_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.MEMORY">
+<span class="sig-name descname"><span class="pre">MEMORY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Memory'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.MEMORY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.PLATFORM_ID">
+<span class="sig-name descname"><span class="pre">PLATFORM_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PlatformID'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.PLATFORM_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.TIME">
+<span class="sig-name descname"><span class="pre">TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.MachineEvents.TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">TaskConstraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the TaskConstraints dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.ATTRIBUTE_NAME">
+<span class="sig-name descname"><span class="pre">ATTRIBUTE_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AttributeName'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.ATTRIBUTE_NAME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.ATTRIBUTE_VALUE">
+<span class="sig-name descname"><span class="pre">ATTRIBUTE_VALUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AttributeValue'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.ATTRIBUTE_VALUE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.COMPARISON_OPERATOR">
+<span class="sig-name descname"><span class="pre">COMPARISON_OPERATOR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ComparisonOperator'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.COMPARISON_OPERATOR" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.JOB_ID">
+<span class="sig-name descname"><span class="pre">JOB_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'JobID'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.JOB_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.TASK_INDEX">
+<span class="sig-name descname"><span class="pre">TASK_INDEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TaskIndex'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.TASK_INDEX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.TIME">
+<span class="sig-name descname"><span class="pre">TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskConstraints.TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">TaskEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the TaskEvents dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.CPU_REQUEST">
+<span class="sig-name descname"><span class="pre">CPU_REQUEST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CPURequest'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.CPU_REQUEST" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.DISK_SPACE_REQUEST">
+<span class="sig-name descname"><span class="pre">DISK_SPACE_REQUEST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'DiskSpaceRequest'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.DISK_SPACE_REQUEST" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.EVENT_TYPE">
+<span class="sig-name descname"><span class="pre">EVENT_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EventType'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.EVENT_TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.JOB_ID">
+<span class="sig-name descname"><span class="pre">JOB_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'JobID'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.JOB_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.MACHINE_ID">
+<span class="sig-name descname"><span class="pre">MACHINE_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MachineID'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.MACHINE_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.MEMORY_REQUEST">
+<span class="sig-name descname"><span class="pre">MEMORY_REQUEST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MemoryRequest'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.MEMORY_REQUEST" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.MISSING_INFO">
+<span class="sig-name descname"><span class="pre">MISSING_INFO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MissingInfo'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.MISSING_INFO" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.PRIORITY">
+<span class="sig-name descname"><span class="pre">PRIORITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Priority'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.PRIORITY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.SCHEDULING_CLASS">
+<span class="sig-name descname"><span class="pre">SCHEDULING_CLASS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SchedulingClass'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.SCHEDULING_CLASS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.TASK_INDEX">
+<span class="sig-name descname"><span class="pre">TASK_INDEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TaskIndex'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.TASK_INDEX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.TIME">
+<span class="sig-name descname"><span class="pre">TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.USER">
+<span class="sig-name descname"><span class="pre">USER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'User'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskEvents.USER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">TaskUsage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the TaskUsage dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.AGGREGATION_TYPE">
+<span class="sig-name descname"><span class="pre">AGGREGATION_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AggregationType'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.AGGREGATION_TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.ASSIGNED_MEMORY_USAGE">
+<span class="sig-name descname"><span class="pre">ASSIGNED_MEMORY_USAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'AssignedMemoryUsage'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.ASSIGNED_MEMORY_USAGE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.CANONICAL_MEMORY_USAGE">
+<span class="sig-name descname"><span class="pre">CANONICAL_MEMORY_USAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CanonicalMemoryUsage'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.CANONICAL_MEMORY_USAGE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.CPU_RATE">
+<span class="sig-name descname"><span class="pre">CPU_RATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CPURate'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.CPU_RATE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.CYCLES_PER_INSTRUCTION">
+<span class="sig-name descname"><span class="pre">CYCLES_PER_INSTRUCTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'CyclesPerInstruction'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.CYCLES_PER_INSTRUCTION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.DISK_IO_TIME">
+<span class="sig-name descname"><span class="pre">DISK_IO_TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'DiskIOTime'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.DISK_IO_TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.END_TIME">
+<span class="sig-name descname"><span class="pre">END_TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'EndTime'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.END_TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.JOB_ID">
+<span class="sig-name descname"><span class="pre">JOB_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'JobID'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.JOB_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.LOCAL_DISK_SPACE_USAGE">
+<span class="sig-name descname"><span class="pre">LOCAL_DISK_SPACE_USAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LocalDiskSpaceUsage'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.LOCAL_DISK_SPACE_USAGE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.MACHINE_ID">
+<span class="sig-name descname"><span class="pre">MACHINE_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MachineID'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.MACHINE_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.MAXIMUM_CPU_RATE">
+<span class="sig-name descname"><span class="pre">MAXIMUM_CPU_RATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MaximumCPURate'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.MAXIMUM_CPU_RATE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.MAXIMUM_DISK_IO_TIME">
+<span class="sig-name descname"><span class="pre">MAXIMUM_DISK_IO_TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MaximumDiskIOTime'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.MAXIMUM_DISK_IO_TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.MAXIMUM_MEMORY_USAGE">
+<span class="sig-name descname"><span class="pre">MAXIMUM_MEMORY_USAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MaximumMemoryUsage'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.MAXIMUM_MEMORY_USAGE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.MEMORY_ACCESS_PER_INSTRUCTION">
+<span class="sig-name descname"><span class="pre">MEMORY_ACCESS_PER_INSTRUCTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'MemoryAccessPerInstruction'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.MEMORY_ACCESS_PER_INSTRUCTION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.SAMPLED_CPU_USAGE">
+<span class="sig-name descname"><span class="pre">SAMPLED_CPU_USAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SampledCPUUsage'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.SAMPLED_CPU_USAGE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.SAMPLE_PORTION">
+<span class="sig-name descname"><span class="pre">SAMPLE_PORTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'SamplePortion'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.SAMPLE_PORTION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.START_TIME">
+<span class="sig-name descname"><span class="pre">START_TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'StartTime'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.START_TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.TASK_INDEX">
+<span class="sig-name descname"><span class="pre">TASK_INDEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TaskIndex'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.TASK_INDEX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.TOTAL_PAGE_CACHE">
+<span class="sig-name descname"><span class="pre">TOTAL_PAGE_CACHE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'TotalPageCache'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.TOTAL_PAGE_CACHE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.UNMAPPED_MEMORY_USAGE">
+<span class="sig-name descname"><span class="pre">UNMAPPED_MEMORY_USAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'UnmappedMemoryUsage'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.TaskUsage.UNMAPPED_MEMORY_USAGE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.format_parts_file_regex">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">format_parts_file_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.format_parts_file_regex" title="Link to this definition">¶</a></dt>
+<dd><p>Format the number of parts to load into a file regex.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">format_parts_file_regex</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">&quot;{part-00000*,part-00001*,part-00002*,part-00003*,part-00004*}&quot;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
+&amp;quot;full&amp;quot;, load all parts.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the number of parts is greater than the maximum number of
+    parts.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The formatted file regex.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.job_events">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">job_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.job_events" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.machine_attributes">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">machine_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.machine_attributes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.machine_events">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">machine_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.machine_events" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.task_constraints">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">task_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.task_constraints" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.task_events">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">task_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.task_events" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2011_2.task_usage">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2011_2.</span></span><span class="sig-name descname"><span class="pre">task_usage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2011_2.task_usage" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </section>
-<section id="spark-data-analysis-datasets-clusterdata-2019-module">
-<h2>spark_data_analysis.datasets.clusterdata_2019 module<a class="headerlink" href="#spark-data-analysis-datasets-clusterdata-2019-module" title="Link to this heading">¶</a></h2>
+<section id="module-spark_data_analysis.datasets.clusterdata_2019">
+<span id="spark-data-analysis-datasets-clusterdata-2019-module"></span><h2>spark_data_analysis.datasets.clusterdata_2019 module<a class="headerlink" href="#module-spark_data_analysis.datasets.clusterdata_2019" title="Link to this heading">¶</a></h2>
+<p>Clusterdata 2019 dataset.</p>
+<p>This module contains the schema definitions for the Clusterdata 2019 dataset
+from Google. This module also provides functions to load the dataset into a
+DataFrame using Spark. The functions are cached to avoid loading the same data
+multiple times and provide a way to specify the number of parts to load.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">CollectionEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the CollectionEvents dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.ALLOC_COLLECTION_ID">
+<span class="sig-name descname"><span class="pre">ALLOC_COLLECTION_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'alloc_collection_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.ALLOC_COLLECTION_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.COLLECTION_ID">
+<span class="sig-name descname"><span class="pre">COLLECTION_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'collection_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.COLLECTION_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.COLLECTION_LOGICAL_NAME">
+<span class="sig-name descname"><span class="pre">COLLECTION_LOGICAL_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'collection_logical_name'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.COLLECTION_LOGICAL_NAME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.COLLECTION_NAME">
+<span class="sig-name descname"><span class="pre">COLLECTION_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'collection_name'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.COLLECTION_NAME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.COLLECTION_TYPE">
+<span class="sig-name descname"><span class="pre">COLLECTION_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'collection_type'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.COLLECTION_TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.MAX_PER_MACHINE">
+<span class="sig-name descname"><span class="pre">MAX_PER_MACHINE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'max_per_machine'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.MAX_PER_MACHINE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.MAX_PER_SWITCH">
+<span class="sig-name descname"><span class="pre">MAX_PER_SWITCH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'max_per_switch'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.MAX_PER_SWITCH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.MISSING_TYPE">
+<span class="sig-name descname"><span class="pre">MISSING_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'missing_type'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.MISSING_TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.PARENT_COLLECTION_ID">
+<span class="sig-name descname"><span class="pre">PARENT_COLLECTION_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'parent_collection_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.PARENT_COLLECTION_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.PRIORITY">
+<span class="sig-name descname"><span class="pre">PRIORITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'priority'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.PRIORITY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.SCHEDULER">
+<span class="sig-name descname"><span class="pre">SCHEDULER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scheduler'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.SCHEDULER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.SCHEDULING_CLASS">
+<span class="sig-name descname"><span class="pre">SCHEDULING_CLASS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scheduling_class'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.SCHEDULING_CLASS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.START_AFTER_COLLECTION_IDS">
+<span class="sig-name descname"><span class="pre">START_AFTER_COLLECTION_IDS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'start_after_collection_ids'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.START_AFTER_COLLECTION_IDS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.TIME">
+<span class="sig-name descname"><span class="pre">TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.TYPE">
+<span class="sig-name descname"><span class="pre">TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'type'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.USER">
+<span class="sig-name descname"><span class="pre">USER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'user'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.USER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.VERTICAL_SCALING">
+<span class="sig-name descname"><span class="pre">VERTICAL_SCALING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'vertical_scaling'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.CollectionEvents.VERTICAL_SCALING" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.Constraint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">Constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.Constraint" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the Constraint dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.Constraint.NAME">
+<span class="sig-name descname"><span class="pre">NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'name'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.Constraint.NAME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.Constraint.RELATION">
+<span class="sig-name descname"><span class="pre">RELATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'relation'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.Constraint.RELATION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.Constraint.VALUE">
+<span class="sig-name descname"><span class="pre">VALUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'value'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.Constraint.VALUE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">InstanceEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the InstanceEvents dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.ALLOC_COLLECTION_ID">
+<span class="sig-name descname"><span class="pre">ALLOC_COLLECTION_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'alloc_collection_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.ALLOC_COLLECTION_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.ALLOC_INSTANCE_INDEX">
+<span class="sig-name descname"><span class="pre">ALLOC_INSTANCE_INDEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'alloc_instance_index'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.ALLOC_INSTANCE_INDEX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.COLLECTION_ID">
+<span class="sig-name descname"><span class="pre">COLLECTION_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'collection_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.COLLECTION_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.COLLECTION_TYPE">
+<span class="sig-name descname"><span class="pre">COLLECTION_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'collection_type'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.COLLECTION_TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.CONSTRAINT">
+<span class="sig-name descname"><span class="pre">CONSTRAINT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'constraint'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.CONSTRAINT" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.INSTANCE_INDEX">
+<span class="sig-name descname"><span class="pre">INSTANCE_INDEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'instance_index'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.INSTANCE_INDEX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.MACHINE_ID">
+<span class="sig-name descname"><span class="pre">MACHINE_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'machine_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.MACHINE_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.MISSING_TYPE">
+<span class="sig-name descname"><span class="pre">MISSING_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'missing_type'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.MISSING_TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.PRIORITY">
+<span class="sig-name descname"><span class="pre">PRIORITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'priority'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.PRIORITY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.RESOURCE_REQUEST">
+<span class="sig-name descname"><span class="pre">RESOURCE_REQUEST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'resource_request'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.RESOURCE_REQUEST" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.SCHEDULING_CLASS">
+<span class="sig-name descname"><span class="pre">SCHEDULING_CLASS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'scheduling_class'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.SCHEDULING_CLASS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.TIME">
+<span class="sig-name descname"><span class="pre">TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.TYPE">
+<span class="sig-name descname"><span class="pre">TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'type'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceEvents.TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">InstanceUsage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the InstanceUsage dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.ALLOC_COLLECTION_ID">
+<span class="sig-name descname"><span class="pre">ALLOC_COLLECTION_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'alloc_collection_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.ALLOC_COLLECTION_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.ALLOC_INSTANCE_INDEX">
+<span class="sig-name descname"><span class="pre">ALLOC_INSTANCE_INDEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'alloc_instance_index'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.ALLOC_INSTANCE_INDEX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.ASSIGNED_MEMORY">
+<span class="sig-name descname"><span class="pre">ASSIGNED_MEMORY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'assigned_memory'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.ASSIGNED_MEMORY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.AVERAGE_USAGE">
+<span class="sig-name descname"><span class="pre">AVERAGE_USAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'average_usage'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.AVERAGE_USAGE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.COLLECTION_ID">
+<span class="sig-name descname"><span class="pre">COLLECTION_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'collection_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.COLLECTION_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.COLLECTION_TYPE">
+<span class="sig-name descname"><span class="pre">COLLECTION_TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'collection_type'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.COLLECTION_TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.CPU_USAGE_DISTRIBUTION">
+<span class="sig-name descname"><span class="pre">CPU_USAGE_DISTRIBUTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cpu_usage_distribution'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.CPU_USAGE_DISTRIBUTION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.CYCLES_PER_INSTRUCTION">
+<span class="sig-name descname"><span class="pre">CYCLES_PER_INSTRUCTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cycles_per_instruction'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.CYCLES_PER_INSTRUCTION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.END_TIME">
+<span class="sig-name descname"><span class="pre">END_TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'end_time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.END_TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.INSTANCE_INDEX">
+<span class="sig-name descname"><span class="pre">INSTANCE_INDEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'instance_index'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.INSTANCE_INDEX" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.MACHINE_ID">
+<span class="sig-name descname"><span class="pre">MACHINE_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'machine_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.MACHINE_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.MAXIMUM_USAGE">
+<span class="sig-name descname"><span class="pre">MAXIMUM_USAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'maximum_usage'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.MAXIMUM_USAGE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.MEMORY_ACCESSES_PER_INSTRUCTION">
+<span class="sig-name descname"><span class="pre">MEMORY_ACCESSES_PER_INSTRUCTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'memory_accesses_per_instruction'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.MEMORY_ACCESSES_PER_INSTRUCTION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.PAGE_CACHE_MEMORY">
+<span class="sig-name descname"><span class="pre">PAGE_CACHE_MEMORY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'page_cache_memory'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.PAGE_CACHE_MEMORY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.RANDOM_SAMPLE_USAGE">
+<span class="sig-name descname"><span class="pre">RANDOM_SAMPLE_USAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'random_sample_usage'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.RANDOM_SAMPLE_USAGE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.SAMPLE_RATE">
+<span class="sig-name descname"><span class="pre">SAMPLE_RATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'sample_rate'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.SAMPLE_RATE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.START_TIME">
+<span class="sig-name descname"><span class="pre">START_TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'start_time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.START_TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.TAIL_CPU_USAGE_DISTRIBUTION">
+<span class="sig-name descname"><span class="pre">TAIL_CPU_USAGE_DISTRIBUTION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'tail_cpu_usage_distribution'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.InstanceUsage.TAIL_CPU_USAGE_DISTRIBUTION" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineAttributes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">MachineAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineAttributes" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the MachineAttributes dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineAttributes.DELETED">
+<span class="sig-name descname"><span class="pre">DELETED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'deleted'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineAttributes.DELETED" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineAttributes.MACHINE_ID">
+<span class="sig-name descname"><span class="pre">MACHINE_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'machine_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineAttributes.MACHINE_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineAttributes.NAME">
+<span class="sig-name descname"><span class="pre">NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'name'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineAttributes.NAME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineAttributes.TIME">
+<span class="sig-name descname"><span class="pre">TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineAttributes.TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineAttributes.VALUE">
+<span class="sig-name descname"><span class="pre">VALUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'value'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineAttributes.VALUE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineEvents">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">MachineEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineEvents" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the MachineEvents dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineEvents.CAPACITY">
+<span class="sig-name descname"><span class="pre">CAPACITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'capacity'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineEvents.CAPACITY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineEvents.MACHINE_ID">
+<span class="sig-name descname"><span class="pre">MACHINE_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'machine_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineEvents.MACHINE_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineEvents.MISSING_DATA_REASON">
+<span class="sig-name descname"><span class="pre">MISSING_DATA_REASON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'missing_data_reason'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineEvents.MISSING_DATA_REASON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineEvents.PLATFORM_ID">
+<span class="sig-name descname"><span class="pre">PLATFORM_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'platform_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineEvents.PLATFORM_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineEvents.SWITCH_ID">
+<span class="sig-name descname"><span class="pre">SWITCH_ID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'switch_id'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineEvents.SWITCH_ID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineEvents.TIME">
+<span class="sig-name descname"><span class="pre">TIME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'time'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineEvents.TIME" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.MachineEvents.TYPE">
+<span class="sig-name descname"><span class="pre">TYPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'type'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.MachineEvents.TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.Resources">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">Resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names=&lt;not</span> <span class="pre">given&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary=None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.Resources" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Enum for the ResourceRequest dataset columns.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.Resources.CPUS">
+<span class="sig-name descname"><span class="pre">CPUS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'cpus'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.Resources.CPUS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.Resources.MEMORY">
+<span class="sig-name descname"><span class="pre">MEMORY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'memory'</span></em><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.Resources.MEMORY" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.collection_events">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">collection_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.collection_events" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.format_parts_file_regex">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">format_parts_file_regex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.format_parts_file_regex" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.instance_events">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">instance_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.instance_events" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.instance_usage">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">instance_usage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.instance_usage" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.machine_attributes">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">machine_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.machine_attributes" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.datasets.clusterdata_2019.machine_events">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.datasets.clusterdata_2019.</span></span><span class="sig-name descname"><span class="pre">machine_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'full'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#spark_data_analysis.datasets.clusterdata_2019.machine_events" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="module-spark_data_analysis.datasets">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-spark_data_analysis.datasets" title="Link to this heading">¶</a></h2>

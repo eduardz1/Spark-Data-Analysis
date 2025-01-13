@@ -37,14 +37,169 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
-<section id="spark-data-analysis-stream-consumer-module">
-<h2>spark_data_analysis.stream.consumer module<a class="headerlink" href="#spark-data-analysis-stream-consumer-module" title="Link to this heading">¶</a></h2>
+<section id="module-spark_data_analysis.stream.consumer">
+<span id="spark-data-analysis-stream-consumer-module"></span><h2>spark_data_analysis.stream.consumer module<a class="headerlink" href="#module-spark_data_analysis.stream.consumer" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.consumer.Consumer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.stream.consumer.</span></span><span class="sig-name descname"><span class="pre">Consumer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.stream.consumer.Consumer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Consume messages from Kafka</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.consumer.Consumer.consumer">
+<span class="sig-name descname"><span class="pre">consumer</span></span><a class="headerlink" href="#spark_data_analysis.stream.consumer.Consumer.consumer" title="Link to this definition">¶</a></dt>
+<dd><p>Kafka consumer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>KafkaConsumer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.consumer.Consumer.topic">
+<span class="sig-name descname"><span class="pre">topic</span></span><a class="headerlink" href="#spark_data_analysis.stream.consumer.Consumer.topic" title="Link to this definition">¶</a></dt>
+<dd><p>Topic to consume messages from</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>topic</strong> (<em>str</em>) – Topic to consume messages from</p>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>**kwargs</strong> – Additional arguments to pass to KafkaConsumer</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.consumer.Consumer.consume_stream">
+<span class="sig-name descname"><span class="pre">consume_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">consumer_fn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#spark_data_analysis.stream.consumer.Consumer.consume_stream" title="Link to this definition">¶</a></dt>
+<dd><p>Consume messages from Kafka and call the consumer function</p>
+<p class="rubric">Example</p>
+<p>Create a consumer for the topic “task-usage” and print each message
+on the console.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">consumer</span> <span class="o">=</span> <span class="n">Consumer</span><span class="p">(</span><span class="s2">&quot;task-usage&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">consumer</span><span class="o">.</span><span class="n">consume_stream</span><span class="p">(</span><span class="nb">print</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>consumer_fn</strong> (<em>Callable</em>) – Function to call for each message</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="spark-data-analysis-stream-demo-module">
-<h2>spark_data_analysis.stream.demo module<a class="headerlink" href="#spark-data-analysis-stream-demo-module" title="Link to this heading">¶</a></h2>
+<section id="module-spark_data_analysis.stream.demo">
+<span id="spark-data-analysis-stream-demo-module"></span><h2>spark_data_analysis.stream.demo module<a class="headerlink" href="#module-spark_data_analysis.stream.demo" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.demo.ensure_kafka_running">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.stream.demo.</span></span><span class="sig-name descname"><span class="pre">ensure_kafka_running</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.stream.demo.ensure_kafka_running" title="Link to this definition">¶</a></dt>
+<dd><p>Start Kafka using docker compose with a simple shell command</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subprocess.CalledProcessError</strong> – If the command fails</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.demo.recreate_topic">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.stream.demo.</span></span><span class="sig-name descname"><span class="pre">recreate_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.stream.demo.recreate_topic" title="Link to this definition">¶</a></dt>
+<dd><p>Recreate a Kafka topic if it doesn’t exist</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – Name of the topic</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.demo.streaming_demo">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.stream.demo.</span></span><span class="sig-name descname"><span class="pre">streaming_demo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docker</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.stream.demo.streaming_demo" title="Link to this definition">¶</a></dt>
+<dd><p>Run the Spark Streaming simulation</p>
+<p>The simulation generates a stream of Task Usage data and calculates the
+average CPU usage every 5 seconds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session to use</p></li>
+<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
+&amp;quot;full&amp;quot;, load all parts.</p></li>
+<li><p><strong>docker</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to start Kafka using Docker. Defaults to True.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="spark-data-analysis-stream-producer-module">
-<h2>spark_data_analysis.stream.producer module<a class="headerlink" href="#spark-data-analysis-stream-producer-module" title="Link to this heading">¶</a></h2>
+<section id="module-spark_data_analysis.stream.producer">
+<span id="spark-data-analysis-stream-producer-module"></span><h2>spark_data_analysis.stream.producer module<a class="headerlink" href="#module-spark_data_analysis.stream.producer" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.producer.Producer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spark_data_analysis.stream.producer.</span></span><span class="sig-name descname"><span class="pre">Producer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.stream.producer.Producer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Produce messages to Kafka</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.producer.Producer.producer">
+<span class="sig-name descname"><span class="pre">producer</span></span><a class="headerlink" href="#spark_data_analysis.stream.producer.Producer.producer" title="Link to this definition">¶</a></dt>
+<dd><p>Kafka producer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>KafkaProducer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.producer.Producer.topic">
+<span class="sig-name descname"><span class="pre">topic</span></span><a class="headerlink" href="#spark_data_analysis.stream.producer.Producer.topic" title="Link to this definition">¶</a></dt>
+<dd><p>Topic to produce messages to</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>topic</strong> (<em>str</em>) – Topic to produce messages to</p>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>**kwargs</strong> – Additional arguments to pass to KafkaProducer</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="spark_data_analysis.stream.producer.Producer.produce_stream">
+<span class="sig-name descname"><span class="pre">produce_stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">df_fn:</span> <span class="pre">~typing.Callable[[~P],</span> <span class="pre">~pyspark.sql.dataframe.DataFrame],</span> <span class="pre">sort_by:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None,</span> <span class="pre">sleep_time:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">0.1,</span> <span class="pre">*df_fn_args:</span> <span class="pre">~typing.~P,</span> <span class="pre">**df_fn_kwargs:</span> <span class="pre">~typing.~P</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#spark_data_analysis.stream.producer.Producer.produce_stream" title="Link to this definition">¶</a></dt>
+<dd><p>Produce messages to Kafka from a DataFrame</p>
+<p class="rubric">Example</p>
+<p>Create a producer for the topic “task-usage” and send each row of the
+DataFrame to Kafka, sorted by the “StartTime” column.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">producer</span> <span class="o">=</span> <span class="n">Producer</span><span class="p">(</span><span class="s2">&quot;task-usage&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">producer</span><span class="o">.</span><span class="n">produce_stream</span><span class="p">(</span><span class="n">task_usage</span><span class="p">,</span> <span class="s2">&quot;StartTime&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_fn</strong> (<em>Callable</em><em>[</em><em>P</em><em>, </em><em>DataFrame</em><em>]</em>) – Function to create the DataFrame</p></li>
+<li><p><strong>sort_by</strong> (<em>str</em><em> | </em><em>None</em>) – Column to sort the DataFrame by, if any</p></li>
+<li><p><strong>sleep_time</strong> (<em>float</em><em>, </em><em>optional</em>) – Time to sleep after each message is
+sent to simulate a continuous stream. Defaults to 0.1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-spark_data_analysis.stream">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-spark_data_analysis.stream" title="Link to this heading">¶</a></h2>
