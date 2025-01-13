@@ -38,14 +38,183 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
-<section id="module-spark_data_analysis.questions.q1">
-<span id="spark-data-analysis-questions-q1-module"></span><h2>spark_data_analysis.questions.q1 module<a class="headerlink" href="#module-spark_data_analysis.questions.q1" title="Link to this heading">¶</a></h2>
+<section id="module-spark_data_analysis.questions.q01">
+<span id="spark-data-analysis-questions-q01-module"></span><h2>spark_data_analysis.questions.q01 module<a class="headerlink" href="#module-spark_data_analysis.questions.q01" title="Link to this heading">¶</a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="spark_data_analysis.questions.q1.q1">
-<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q1.</span></span><span class="sig-name descname"><span class="pre">q1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q1.q1" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="spark_data_analysis.questions.q01.q01">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q01.</span></span><span class="sig-name descname"><span class="pre">q01</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q01.q01" title="Link to this definition">¶</a></dt>
 <dd><p>Question 1</p>
 <p>Answers the following questions:
 - What is the distribution of the machines according to their CPU capacity?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
+<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
+&amp;quot;full&amp;quot;, load all parts.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-spark_data_analysis.questions.q02">
+<span id="spark-data-analysis-questions-q02-module"></span><h2>spark_data_analysis.questions.q02 module<a class="headerlink" href="#module-spark_data_analysis.questions.q02" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.questions.q02.q02">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q02.</span></span><span class="sig-name descname"><span class="pre">q02</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q02.q02" title="Link to this definition">¶</a></dt>
+<dd><p>Question 2</p>
+<p>Answers the following questions:
+- What is the percentage of computational power lost due to maintenance</p>
+<blockquote>
+<div><p>(a machine went offline and reconnected later)?</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
+<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
+&amp;quot;full&amp;quot;, load all parts.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-spark_data_analysis.questions.q03">
+<span id="spark-data-analysis-questions-q03-module"></span><h2>spark_data_analysis.questions.q03 module<a class="headerlink" href="#module-spark_data_analysis.questions.q03" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.questions.q03.q03">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q03.</span></span><span class="sig-name descname"><span class="pre">q03</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q03.q03" title="Link to this definition">¶</a></dt>
+<dd><p>Question 3</p>
+<p>Answers the following questions:
+- What is the distribution of the number of jobs/tasks per scheduling class?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
+<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
+&amp;quot;full&amp;quot;, load all parts.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-spark_data_analysis.questions.q04">
+<span id="spark-data-analysis-questions-q04-module"></span><h2>spark_data_analysis.questions.q04 module<a class="headerlink" href="#module-spark_data_analysis.questions.q04" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.questions.q04.q04">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q04.</span></span><span class="sig-name descname"><span class="pre">q04</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q04.q04" title="Link to this definition">¶</a></dt>
+<dd><p>Question 4</p>
+<p>Answers the following questions:
+- Do tasks with a low scheduling class have a higher probability of being evicted?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
+<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
+&amp;quot;full&amp;quot;, load all parts.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-spark_data_analysis.questions.q05">
+<span id="spark-data-analysis-questions-q05-module"></span><h2>spark_data_analysis.questions.q05 module<a class="headerlink" href="#module-spark_data_analysis.questions.q05" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.questions.q05.q05">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q05.</span></span><span class="sig-name descname"><span class="pre">q05</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q05.q05" title="Link to this definition">¶</a></dt>
+<dd><p>Question 5</p>
+<p>Answers the following questions:
+- In general, do tasks from the same job run on the same machine?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
+<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
+&amp;quot;full&amp;quot;, load all parts.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-spark_data_analysis.questions.q06">
+<span id="spark-data-analysis-questions-q06-module"></span><h2>spark_data_analysis.questions.q06 module<a class="headerlink" href="#module-spark_data_analysis.questions.q06" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.questions.q06.q06">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q06.</span></span><span class="sig-name descname"><span class="pre">q06</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q06.q06" title="Link to this definition">¶</a></dt>
+<dd><p>Question 6</p>
+<p>Answers the following questions:
+- Are the tasks that request the more resources the one that consume the</p>
+<blockquote>
+<div><p>more resources?</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
+<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
+&amp;quot;full&amp;quot;, load all parts.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-spark_data_analysis.questions.q07">
+<span id="spark-data-analysis-questions-q07-module"></span><h2>spark_data_analysis.questions.q07 module<a class="headerlink" href="#module-spark_data_analysis.questions.q07" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.questions.q07.q07">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q07.</span></span><span class="sig-name descname"><span class="pre">q07</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q07.q07" title="Link to this definition">¶</a></dt>
+<dd><p>Question 7</p>
+<p>Answers the following questions:
+- Can we observe correlations between peaks of high resource consumption on</p>
+<blockquote>
+<div><p>some machines and task eviction events?</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
+<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
+&amp;quot;full&amp;quot;, load all parts.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-spark_data_analysis.questions.q08">
+<span id="spark-data-analysis-questions-q08-module"></span><h2>spark_data_analysis.questions.q08 module<a class="headerlink" href="#module-spark_data_analysis.questions.q08" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.questions.q08.q08">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q08.</span></span><span class="sig-name descname"><span class="pre">q08</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q08.q08" title="Link to this definition">¶</a></dt>
+<dd><p>Question 8</p>
+<p>Answers the following questions:
+- What is the hourly cycles per instruction measure?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark Session</p></li>
+<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
+&amp;quot;full&amp;quot;, load all parts.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-spark_data_analysis.questions.q09">
+<span id="spark-data-analysis-questions-q09-module"></span><h2>spark_data_analysis.questions.q09 module<a class="headerlink" href="#module-spark_data_analysis.questions.q09" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spark_data_analysis.questions.q09.q09">
+<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q09.</span></span><span class="sig-name descname"><span class="pre">q09</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q09.q09" title="Link to this definition">¶</a></dt>
+<dd><p>Question 9</p>
+<p>Answers the following questions:
+- How do resource requests (CPU, memory) evolve over time for long-running jobs?</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -79,186 +248,14 @@ memory accesses per instruction?</p>
 </dd></dl>
 
 </section>
-<section id="spark-data-analysis-questions-q11-module">
-<h2>spark_data_analysis.questions.q11 module<a class="headerlink" href="#spark-data-analysis-questions-q11-module" title="Link to this heading">¶</a></h2>
-</section>
-<section id="module-spark_data_analysis.questions.q2">
-<span id="spark-data-analysis-questions-q2-module"></span><h2>spark_data_analysis.questions.q2 module<a class="headerlink" href="#module-spark_data_analysis.questions.q2" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="spark_data_analysis.questions.q2.q2">
-<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q2.</span></span><span class="sig-name descname"><span class="pre">q2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q2.q2" title="Link to this definition">¶</a></dt>
-<dd><p>Question 2</p>
-<p>Answers the following questions:
-- What is the percentage of computational power lost due to maintenance</p>
-<blockquote>
-<div><p>(a machine went offline and reconnected later)?</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
-<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
-&amp;quot;full&amp;quot;, load all parts.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-spark_data_analysis.questions.q3">
-<span id="spark-data-analysis-questions-q3-module"></span><h2>spark_data_analysis.questions.q3 module<a class="headerlink" href="#module-spark_data_analysis.questions.q3" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="spark_data_analysis.questions.q3.q3">
-<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q3.</span></span><span class="sig-name descname"><span class="pre">q3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q3.q3" title="Link to this definition">¶</a></dt>
-<dd><p>Question 3</p>
-<p>Answers the following questions:
-- What is the distribution of the number of jobs/tasks per scheduling class?</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
-<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
-&amp;quot;full&amp;quot;, load all parts.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-spark_data_analysis.questions.q4">
-<span id="spark-data-analysis-questions-q4-module"></span><h2>spark_data_analysis.questions.q4 module<a class="headerlink" href="#module-spark_data_analysis.questions.q4" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="spark_data_analysis.questions.q4.q4">
-<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q4.</span></span><span class="sig-name descname"><span class="pre">q4</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q4.q4" title="Link to this definition">¶</a></dt>
-<dd><p>Question 4</p>
-<p>Answers the following questions:
-- Do tasks with a low scheduling class have a higher probability of being evicted?</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
-<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
-&amp;quot;full&amp;quot;, load all parts.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-spark_data_analysis.questions.q5">
-<span id="spark-data-analysis-questions-q5-module"></span><h2>spark_data_analysis.questions.q5 module<a class="headerlink" href="#module-spark_data_analysis.questions.q5" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="spark_data_analysis.questions.q5.q5">
-<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q5.</span></span><span class="sig-name descname"><span class="pre">q5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q5.q5" title="Link to this definition">¶</a></dt>
-<dd><p>Question 5</p>
-<p>Answers the following questions:
-- In general, do tasks from the same job run on the same machine?</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
-<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
-&amp;quot;full&amp;quot;, load all parts.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-spark_data_analysis.questions.q6">
-<span id="spark-data-analysis-questions-q6-module"></span><h2>spark_data_analysis.questions.q6 module<a class="headerlink" href="#module-spark_data_analysis.questions.q6" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="spark_data_analysis.questions.q6.q6">
-<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q6.</span></span><span class="sig-name descname"><span class="pre">q6</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q6.q6" title="Link to this definition">¶</a></dt>
-<dd><p>Question 6</p>
-<p>Answers the following questions:
-- Are the tasks that request the more resources the one that consume the</p>
-<blockquote>
-<div><p>more resources?</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
-<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
-&amp;quot;full&amp;quot;, load all parts.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-spark_data_analysis.questions.q7">
-<span id="spark-data-analysis-questions-q7-module"></span><h2>spark_data_analysis.questions.q7 module<a class="headerlink" href="#module-spark_data_analysis.questions.q7" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="spark_data_analysis.questions.q7.q7">
-<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q7.</span></span><span class="sig-name descname"><span class="pre">q7</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q7.q7" title="Link to this definition">¶</a></dt>
-<dd><p>Question 7</p>
-<p>Answers the following questions:
-- Can we observe correlations between peaks of high resource consumption on</p>
-<blockquote>
-<div><p>some machines and task eviction events?</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
-<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
-&amp;quot;full&amp;quot;, load all parts.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-spark_data_analysis.questions.q8">
-<span id="spark-data-analysis-questions-q8-module"></span><h2>spark_data_analysis.questions.q8 module<a class="headerlink" href="#module-spark_data_analysis.questions.q8" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="spark_data_analysis.questions.q8.q8">
-<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q8.</span></span><span class="sig-name descname"><span class="pre">q8</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q8.q8" title="Link to this definition">¶</a></dt>
-<dd><p>Question 8</p>
-<p>Answers the following questions:
-- What is the hourly cycles per instruction measure?</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark Session</p></li>
-<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
-&amp;quot;full&amp;quot;, load all parts.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="module-spark_data_analysis.questions.q9">
-<span id="spark-data-analysis-questions-q9-module"></span><h2>spark_data_analysis.questions.q9 module<a class="headerlink" href="#module-spark_data_analysis.questions.q9" title="Link to this heading">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="spark_data_analysis.questions.q9.q9">
-<span class="sig-prename descclassname"><span class="pre">spark_data_analysis.questions.q9.</span></span><span class="sig-name descname"><span class="pre">q9</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ss</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SparkSession</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'full'</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spark_data_analysis.questions.q9.q9" title="Link to this definition">¶</a></dt>
-<dd><p>Question 9</p>
-<p>Answers the following questions:
-- How do resource requests (CPU, memory) evolve over time for long-running jobs?</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ss</strong> (<em>SparkSession</em>) – Spark session</p></li>
-<li><p><strong>parts</strong> (<em>int</em><em> | </em><em>Literal</em><em>[</em><em>&amp;quot;full&amp;quot;</em><em>]</em>) – Number of parts to load. If
-&amp;quot;full&amp;quot;, load all parts.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
 <section id="module-spark_data_analysis.questions">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-spark_data_analysis.questions" title="Link to this heading">¶</a></h2>
 <p>Questions module for spark_data_analysis package.</p>
 <p>This module contains the questions proposed from the assignment of the course
 “Large Scale Data Analysis and Distributed Systems” from the University of
 Grenoble Alpes plus the two additional questions proposed by the author of
-this package. Each question is identified by a unique number in the format qX,
-where X is the question number.</p>
+this package. Each question is identified by a unique number in the format qXX,
+where XX is the question number.</p>
 </section>
 </section>
 

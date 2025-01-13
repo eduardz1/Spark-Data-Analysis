@@ -4,10 +4,74 @@ spark\_data\_analysis.questions package
 Submodules
 ----------
 
-spark\_data\_analysis.questions.q1 module
------------------------------------------
+spark\_data\_analysis.questions.q01 module
+------------------------------------------
 
-.. automodule:: spark_data_analysis.questions.q1
+.. automodule:: spark_data_analysis.questions.q01
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+spark\_data\_analysis.questions.q02 module
+------------------------------------------
+
+.. automodule:: spark_data_analysis.questions.q02
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+spark\_data\_analysis.questions.q03 module
+------------------------------------------
+
+.. automodule:: spark_data_analysis.questions.q03
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+spark\_data\_analysis.questions.q04 module
+------------------------------------------
+
+.. automodule:: spark_data_analysis.questions.q04
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+spark\_data\_analysis.questions.q05 module
+------------------------------------------
+
+.. automodule:: spark_data_analysis.questions.q05
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+spark\_data\_analysis.questions.q06 module
+------------------------------------------
+
+.. automodule:: spark_data_analysis.questions.q06
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+spark\_data\_analysis.questions.q07 module
+------------------------------------------
+
+.. automodule:: spark_data_analysis.questions.q07
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+spark\_data\_analysis.questions.q08 module
+------------------------------------------
+
+.. automodule:: spark_data_analysis.questions.q08
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+spark\_data\_analysis.questions.q09 module
+------------------------------------------
+
+.. automodule:: spark_data_analysis.questions.q09
    :members:
    :undoc-members:
    :show-inheritance:
@@ -16,78 +80,6 @@ spark\_data\_analysis.questions.q10 module
 ------------------------------------------
 
 .. automodule:: spark_data_analysis.questions.q10
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-spark\_data\_analysis.questions.q11 module
-------------------------------------------
-
-.. automodule:: spark_data_analysis.questions.q11
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-spark\_data\_analysis.questions.q2 module
------------------------------------------
-
-.. automodule:: spark_data_analysis.questions.q2
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-spark\_data\_analysis.questions.q3 module
------------------------------------------
-
-.. automodule:: spark_data_analysis.questions.q3
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-spark\_data\_analysis.questions.q4 module
------------------------------------------
-
-.. automodule:: spark_data_analysis.questions.q4
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-spark\_data\_analysis.questions.q5 module
------------------------------------------
-
-.. automodule:: spark_data_analysis.questions.q5
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-spark\_data\_analysis.questions.q6 module
------------------------------------------
-
-.. automodule:: spark_data_analysis.questions.q6
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-spark\_data\_analysis.questions.q7 module
------------------------------------------
-
-.. automodule:: spark_data_analysis.questions.q7
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-spark\_data\_analysis.questions.q8 module
------------------------------------------
-
-.. automodule:: spark_data_analysis.questions.q8
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-spark\_data\_analysis.questions.q9 module
------------------------------------------
-
-.. automodule:: spark_data_analysis.questions.q9
    :members:
    :undoc-members:
    :show-inheritance:
