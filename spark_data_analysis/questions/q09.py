@@ -17,7 +17,7 @@ from spark_data_analysis.constants import IMGS_PATH
 from spark_data_analysis.datasets.clusterdata_2011_2 import TaskEvents, task_events
 
 
-def q9(ss: SparkSession, parts: int | Literal["full"]):
+def q09(ss: SparkSession, parts: int | Literal["full"]):
     """Question 9
 
     Answers the following questions:

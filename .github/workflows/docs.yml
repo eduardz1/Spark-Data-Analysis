@@ -19,6 +19,7 @@ jobs:
           pip install -r requirements.txt
       - name: Sphinx build
         run: |
+          sphinx-apidoc -f -o docs/source spark_data_analysis
           cd docs
           make html
       - name: Upload artifacts

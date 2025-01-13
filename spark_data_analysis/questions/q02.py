@@ -9,7 +9,7 @@ from spark_data_analysis.datasets.clusterdata_2011_2 import (
 )
 
 
-def q2(ss: SparkSession, _: int | Literal["full"]):
+def q02(ss: SparkSession, _: int | Literal["full"]):
     """Question 2
 
     Answers the following questions:

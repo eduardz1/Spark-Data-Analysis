@@ -11,7 +11,7 @@ from spark_data_analysis.datasets.clusterdata_2011_2 import (
 from spark_data_analysis.rich import table
 
 
-def q4(ss: SparkSession, parts: int | Literal["full"]):
+def q04(ss: SparkSession, parts: int | Literal["full"]):
     """Question 4
 
     Answers the following questions:

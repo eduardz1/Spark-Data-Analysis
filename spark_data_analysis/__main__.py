@@ -119,7 +119,7 @@ def parse_args() -> argparse.Namespace:
 
     if args.subcommands == "questions":
         if args.a:
-            args.n = range(1, 10)
+            args.n = range(1, 11)
 
     return args
 
@@ -165,8 +165,8 @@ def main():
             os.environ["SPARK_DATA_ANALYSIS_PLOT"] = "true" if args.plot else "false"
 
             for n in args.n:
-                module = importlib.import_module(f"spark_data_analysis.questions.q{n}")
-                func = getattr(module, f"q{n}")
+                module = importlib.import_module(f"spark_data_analysis.questions.q{n:02d}")
+                func = getattr(module, f"q{n:02d}")
                 console.log(f"{n} - [bold red]{QUESTION_TITLES[n]} [/bold red]")
                 start = time.perf_counter()
                 func(ss, args.parts or "full")

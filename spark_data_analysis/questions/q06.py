@@ -8,7 +8,7 @@ from spark_data_analysis.datasets.clusterdata_2011_2 import task_events, task_us
 from spark_data_analysis.rich import table
 
 
-def q6(ss: SparkSession, parts: int | Literal["full"]):
+def q06(ss: SparkSession, parts: int | Literal["full"]):
     """Question 6
 
     Answers the following questions:
